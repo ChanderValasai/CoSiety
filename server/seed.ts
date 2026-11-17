@@ -250,18 +250,66 @@ export function provisionSocietySkeleton(params: ProvisionSocietyParams): void {
 
   // Single-price internet packages (BR-03: same price for every villager)
   const pkgs = [
-    ['basic', 'Basic Village 5 Mbps', 'بنيادي 5 ايم بي پي ايس', 'بنیادی 5 ایم بی پی ایس', '5 Mbps Unlimited', 800],
-    ['family', 'Family Study 12 Mbps', 'فيملِي اسٽڊي 12 ايم بي', 'فیملی اسٹڈی 12 ایم بی', '12 Mbps Unlimited', 1400],
-    ['shop', 'Shop & Community 20 Mbps', 'دڪان ۽ ڪميونٽي 20 ايم بي', 'دکان اور کمیونٹی 20 ایم بی', '20 Mbps Priority', 2200],
+    [
+      'daily',
+      'Daily',
+      'روزانو',
+      'روزانہ',
+      '2 Mbps · 1 day',
+      '24-hour internet access for one registered device.',
+      'هڪ رجسٽرڊ ڊيوائس لاءِ 24 ڪلاڪ انٽرنيٽ رسائي.',
+      'ایک رجسٹرڈ ڈیوائس کے لیے 24 گھنٹے انٹرنیٹ رسائی۔',
+      50,
+    ],
+    [
+      'weekly',
+      'Weekly',
+      'هفتيوار',
+      'ہفتہ وار',
+      '2 Mbps · 7 days',
+      '7-day internet access for one registered device.',
+      'هڪ رجسٽرڊ ڊيوائس لاءِ 7 ڏينهن انٽرنيٽ رسائي.',
+      'ایک رجسٹرڈ ڈیوائس کے لیے 7 دن انٹرنیٹ رسائی۔',
+      200,
+    ],
+    [
+      'biweekly',
+      'Biweekly',
+      'ٻه هفتاوار',
+      'دو ہفتہ وار',
+      '2 Mbps · 14 days',
+      '14-day internet access for one registered device.',
+      'هڪ رجسٽرڊ ڊيوائس لاءِ 14 ڏينهن انٽرنيٽ رسائي.',
+      'ایک رجسٹرڈ ڈیوائس کے لیے 14 دن انٹرنیٹ رسائی۔',
+      350,
+    ],
+    [
+      'monthly',
+      'Monthly',
+      'ماهوار',
+      'ماہانہ',
+      '2 Mbps · 30 days',
+      '30-day internet access for one registered device.',
+      'هڪ رجسٽرڊ ڊيوائس لاءِ 30 ڏينهن انٽرنيٽ رسائي.',
+      'ایک رجسٹرڈ ڈیوائس کے لیے 30 دن انٹرنیٹ رسائی۔',
+      600,
+    ],
   ] as const;
 
-  for (const [slug, nEn, nSd, nUr, speed, price] of pkgs) {
+  const defaultFeatures = JSON.stringify([
+    'Bound to 1 registered device',
+    'Works across village APs',
+  ]);
+
+  for (const [slug, nEn, nSd, nUr, speed, dEn, dSd, dUr, price] of pkgs) {
     opsDb
       .prepare(
-        `INSERT INTO pay_package (id, society_id, name_en, name_sd, name_ur, speed_label, price_pkr, active)
-         VALUES (?, ?, ?, ?, ?, ?, ?, 1)`
+        `INSERT INTO pay_package (
+          id, society_id, name_en, name_sd, name_ur, speed_label,
+          description_en, description_sd, description_ur, features_json, price_pkr, active
+        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 1)`
       )
-      .run(`${params.id}-pkg-${slug}`, params.id, nEn, nSd, nUr, speed, price);
+      .run(`${params.id}-pkg-${slug}`, params.id, nEn, nSd, nUr, speed, dEn, dSd, dUr, defaultFeatures, price);
   }
 
   appendAuditEvent({
@@ -763,11 +811,11 @@ export function seedInitialData(): void {
     .run();
 
   const purchases = [
-    ['pur-1', 'm-ali', 'Ali Bheel', 'pabohar-pkg-family', 'Family Study 12 Mbps', 1400, 50, 1450, 'paid', '2026-11-12T08:30:00.000Z', null],
-    ['pur-2', 'm-fatima', 'Fatima Meghwar', 'pabohar-pkg-basic', 'Basic Village 5 Mbps', 800, 50, 850, 'paid', '2026-11-13T11:15:00.000Z', null],
-    ['pur-3', 'm-saeed', 'Saeed Memon', 'pabohar-pkg-shop', 'Shop & Community 20 Mbps', 2200, 50, 2250, 'paid', '2026-11-14T09:40:00.000Z', null],
-    ['pur-4', 'm-rehman', 'Rehman Samoon', 'pabohar-pkg-family', 'Family Study 12 Mbps', 1400, 50, 1450, 'pending', '2026-11-15T14:20:00.000Z', 'Awaiting mobile wallet confirmation'],
-    ['pur-5', 'm-amina', 'Amina Junejo', 'pabohar-pkg-basic', 'Basic Village 5 Mbps', 800, 50, 850, 'failed', '2026-11-15T16:10:00.000Z', 'Gateway timeout — retry advised'],
+    ['pur-1', 'm-ali', 'Ali Bheel', 'pabohar-pkg-monthly', 'Monthly', 600, 50, 650, 'paid', '2026-11-12T08:30:00.000Z', null],
+    ['pur-2', 'm-fatima', 'Fatima Meghwar', 'pabohar-pkg-weekly', 'Weekly', 200, 50, 250, 'paid', '2026-11-13T11:15:00.000Z', null],
+    ['pur-3', 'm-saeed', 'Saeed Memon', 'pabohar-pkg-biweekly', 'Biweekly', 350, 50, 400, 'paid', '2026-11-14T09:40:00.000Z', null],
+    ['pur-4', 'm-rehman', 'Rehman Samoon', 'pabohar-pkg-daily', 'Daily', 50, 50, 100, 'pending', '2026-11-15T14:20:00.000Z', 'Awaiting mobile wallet confirmation'],
+    ['pur-5', 'm-amina', 'Amina Junejo', 'pabohar-pkg-weekly', 'Weekly', 200, 50, 250, 'failed', '2026-11-15T16:10:00.000Z', 'Gateway timeout — retry advised'],
   ] as const;
 
   for (const [id, mId, mName, pId, pName, pr, lv, tot, st, at, note] of purchases) {

@@ -32,7 +32,7 @@ function resolveDataDir(): string {
 const DATA_DIR = resolveDataDir();
 
 // Bump when schema changes significantly (v1.0 -> v1.1: vote-points, co-presidents, contests, no neighbourhood groups)
-const SCHEMA_VERSION = 'v1.1-2026-11-17-cosiety';
+const SCHEMA_VERSION = 'v1.1-2026-11-17-packages';
 const VERSION_FILE = path.join(DATA_DIR, '.schema_version');
 
 function ensureSchemaVersion(): void {
@@ -798,6 +798,10 @@ export function initAllSchemas(): void {
       name_sd TEXT NOT NULL,
       name_ur TEXT NOT NULL,
       speed_label TEXT NOT NULL,
+      description_en TEXT NOT NULL DEFAULT '',
+      description_sd TEXT NOT NULL DEFAULT '',
+      description_ur TEXT NOT NULL DEFAULT '',
+      features_json TEXT NOT NULL DEFAULT '[]',
       price_pkr INTEGER NOT NULL CHECK(price_pkr > 0),
       active INTEGER NOT NULL DEFAULT 1
     );

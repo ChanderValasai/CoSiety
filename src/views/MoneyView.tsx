@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import {
   ArrowLeftRight,
+  Check,
   RotateCcw,
   ShieldAlert,
-  Wifi,
 } from 'lucide-react';
 import type { BootstrapData, LangCode, LedgerSummary } from '../types';
 import { formatPkr, pickLang, t } from '../i18n/translations';
@@ -43,7 +43,18 @@ export const MoneyView: React.FC<MoneyViewProps> = ({
   }>>([]);
   const [packagesData, setPackagesData] = useState<{
     activeLevyPkr: number;
-    packages: Array<{ id: string; name_en: string; name_sd: string; name_ur: string; speed_label: string; price_pkr: number }>;
+    packages: Array<{
+      id: string;
+      name_en: string;
+      name_sd: string;
+      name_ur: string;
+      speed_label: string;
+      description_en?: string;
+      description_sd?: string;
+      description_ur?: string;
+      features_json?: string;
+      price_pkr: number;
+    }>;
     purchases: Array<{ id: string; member_name: string; package_name: string; price_pkr: number; levy_pkr: number; total_pkr: number; status: string; followup_note: string | null; created_at: string }>;
   } | null>(null);
   const [reconData, setReconData] = useState<{
@@ -473,53 +484,88 @@ export const MoneyView: React.FC<MoneyViewProps> = ({
               Every resident pays the same package price. The Village Fund levy ({formatPkr(packagesData.activeLevyPkr)}) is charged per individual package and shown separately (AC-FIN-05: failed/pending excluded).
             </p>
 
-            <div className="mt-5 grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div className="mt-5 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
               {packagesData.packages.map((p) => {
                 const levy = packagesData.activeLevyPkr;
                 const total = p.price_pkr + levy;
+                let features: string[] = ['Bound to 1 registered device', 'Works across village APs'];
+                if (p.features_json) {
+                  try {
+                    const parsed = JSON.parse(p.features_json);
+                    if (Array.isArray(parsed) && parsed.length > 0) features = parsed;
+                  } catch {
+                    // fallback to defaults
+                  }
+                }
+                const desc = pickLang(
+                  lang,
+                  p.description_en || '',
+                  p.description_sd || p.description_en || '',
+                  p.description_ur || p.description_en || ''
+                );
+
                 return (
-                  <div key={p.id} className="flex flex-col justify-between rounded-xl border border-slate-200 p-5">
+                  <div
+                    key={p.id}
+                    className="flex flex-col justify-between rounded-2xl border border-slate-200 bg-white p-5 shadow-xs"
+                  >
                     <div>
-                      <div className="flex items-center justify-between text-xs text-slate-500">
-                        <span className="font-semibold text-[#0F766E]">{p.speed_label}</span>
-                        <Wifi className="h-4 w-4 text-slate-400" />
-                      </div>
-                      <h3 className="mt-2 text-lg font-bold text-slate-900">
+                      <h3 className="text-base font-bold text-slate-900">
                         {pickLang(lang, p.name_en, p.name_sd, p.name_ur)}
                       </h3>
 
-                      <div className="mt-4 space-y-1.5 border-t border-slate-100 pt-3 text-sm">
-                        <div className="flex justify-between text-slate-600">
-                          <span>Package Price (VilloThar)</span>
-                          <span className="font-mono-num font-semibold text-slate-900">{formatPkr(p.price_pkr)}</span>
-                        </div>
-                        <div className="flex justify-between text-[#0F766E]">
-                          <span>Village Fund Levy</span>
-                          <span className="font-mono-num font-semibold">{formatPkr(levy)}</span>
-                        </div>
-                        <div className="flex justify-between border-t border-slate-100 pt-1.5 font-bold text-slate-900">
-                          <span>Total Payable</span>
-                          <span className="font-mono-num">{formatPkr(total)}</span>
-                        </div>
+                      <div className="mt-3 flex items-baseline gap-2">
+                        <span className="font-mono-num text-3xl font-extrabold tracking-tight text-slate-900">
+                          Rs {p.price_pkr}
+                        </span>
+                        <span className="text-xs font-medium text-slate-500">indicative</span>
                       </div>
+
+                      <div className="mt-1 font-mono-num text-xs font-semibold text-[#0F766E]">
+                        {p.speed_label}
+                      </div>
+
+                      {desc && (
+                        <p className="mt-3 text-sm text-slate-600 leading-relaxed">
+                          {desc}
+                        </p>
+                      )}
+
+                      <div className="mt-3 flex items-center justify-between text-xs text-slate-500">
+                        <span>+ {formatPkr(levy)} VF levy</span>
+                        <span className="font-mono-num font-semibold text-slate-800">
+                          Total {formatPkr(total)}
+                        </span>
+                      </div>
+
+                      <div className="my-4 border-t border-slate-100" />
+
+                      <ul className="space-y-2 text-xs text-slate-600">
+                        {features.map((feat) => (
+                          <li key={feat} className="flex items-start gap-2">
+                            <Check className="mt-0.5 h-3.5 w-3.5 shrink-0 text-emerald-600" />
+                            <span>{feat}</span>
+                          </li>
+                        ))}
+                      </ul>
                     </div>
 
-                    <div className="mt-5 flex gap-2">
+                    <div className="mt-5 space-y-2">
                       <button
                         type="button"
                         disabled={busy}
                         onClick={() => handleBuyPackage(p.id, 'paid')}
-                        className="min-h-[44px] flex-1 rounded-lg bg-[#0F766E] px-3 text-xs font-semibold text-white hover:bg-[#0D655E] cursor-pointer"
+                        className="min-h-[44px] w-full rounded-xl bg-[#0B66A8] px-4 text-sm font-semibold text-white hover:bg-[#09558C] transition-colors cursor-pointer disabled:opacity-60"
                       >
-                        Record Paid Purchase
+                        Buy Package
                       </button>
                       <button
                         type="button"
                         disabled={busy}
                         onClick={() => handleBuyPackage(p.id, 'failed')}
-                        className="min-h-[44px] rounded-lg border border-slate-200 px-3 text-xs font-semibold text-slate-600 hover:bg-slate-50 cursor-pointer"
+                        className="w-full py-1 text-[11px] font-medium text-slate-400 hover:text-slate-600 cursor-pointer"
                       >
-                        Test Failed
+                        Simulate failed payment
                       </button>
                     </div>
                   </div>
