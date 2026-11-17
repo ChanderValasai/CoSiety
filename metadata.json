@@ -1,0 +1,6 @@
+{
+  "name": "Cosiety — Village Cooperative Society",
+  "description": "Digital Village Cooperative Society portal launching in Pabohar, Tharparkar, Sindh and built for multi-village expansion — equal voting, three-stream financial transparency, and participatory projects.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
