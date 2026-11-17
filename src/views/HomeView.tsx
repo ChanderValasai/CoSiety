@@ -69,7 +69,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
               <span aria-hidden="true">·</span>
               <span>{bootstrap.societies.length} {bootstrap.societies.length === 1 ? 'Village Active' : 'Villages Active'}</span>
               <span aria-hidden="true">·</span>
-              <span className="font-semibold text-[#0F766E]">Whole-Village Society (Zero Subdivisions)</span>
+              <span className="font-semibold text-[#1B6EB5]">Whole-Village Society (Zero Subdivisions)</span>
             </div>
 
             <div className="flex flex-wrap items-center gap-3">
@@ -88,7 +88,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
             <button
               type="button"
               onClick={onOpenRegister}
-              className="inline-flex min-h-[48px] items-center gap-2 rounded-xl bg-[#0F766E] px-5 py-3 text-sm font-semibold text-white hover:bg-[#0D655E] transition-colors cursor-pointer"
+              className="inline-flex min-h-[48px] items-center gap-2 rounded-xl bg-[#1B6EB5] px-5 py-3 text-sm font-semibold text-white hover:bg-[#155791] transition-colors cursor-pointer"
             >
               <UserPlus className="h-4 w-4" />
               {t(lang, 'registerMemberBtn')}
@@ -96,9 +96,9 @@ export const HomeView: React.FC<HomeViewProps> = ({
             <button
               type="button"
               onClick={onOpenOnboardVillage}
-              className="inline-flex min-h-[48px] items-center gap-2 rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm font-semibold text-slate-700 hover:bg-slate-50 transition-colors cursor-pointer"
+              className="inline-flex min-h-[48px] items-center gap-2 rounded-xl border border-[#8A8D91]/40 bg-white px-4 py-3 text-sm font-semibold text-slate-700 hover:border-[#1B6EB5]/50 hover:bg-[#8EC5E8]/10 transition-colors cursor-pointer"
             >
-              <Building2 className="h-4 w-4 text-slate-500" />
+              <Building2 className="h-4 w-4 text-[#8A8D91]" />
               {t(lang, 'addVillage')}
             </button>
           </div>
@@ -126,7 +126,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
           </div>
           <div>
             <div className="text-xs font-medium text-slate-500">{t(lang, 'pendingQueue')}</div>
-            <div className="mt-1 text-2xl font-bold text-amber-700 font-mono-num">
+            <div className="mt-1 text-2xl font-bold text-[#B45309] font-mono-num">
               {bootstrap.stats.pendingVerifications}
             </div>
           </div>
@@ -134,12 +134,12 @@ export const HomeView: React.FC<HomeViewProps> = ({
 
         {/* Private Signed-in Member Vote-Points Strip */}
         {bootstrap.sessionUser && userPts && (
-          <div className="mt-5 rounded-xl border border-[#0F766E]/25 bg-[#0F766E]/5 px-4 py-3 flex flex-wrap items-center justify-between gap-3 text-xs">
+          <div className="mt-5 rounded-xl border border-[#8EC5E8] bg-[#8EC5E8]/15 px-4 py-3 flex flex-wrap items-center justify-between gap-3 text-xs">
             <div className="flex items-center gap-2 text-slate-900">
-              <Award className="h-4 w-4 text-[#0F766E] shrink-0" />
+              <Award className="h-4 w-4 text-[#1B6EB5] shrink-0" />
               <span>
                 <strong>Private Vote-Points Summary ({bootstrap.sessionUser.fullName}):</strong>{' '}
-                <span className="font-mono-num font-bold text-[#0F766E]">
+                <span className="font-mono-num font-bold text-[#1B6EB5]">
                   {userPts.totalPts} / {userPts.maxPoints} pts
                 </span>{' '}
                 (Edu {userPts.educationPts} + Age {userPts.agePts} + Work {userPts.workPts} + Exposure {userPts.exposurePts})
@@ -161,21 +161,21 @@ export const HomeView: React.FC<HomeViewProps> = ({
         <div className="flex flex-col justify-between rounded-2xl border border-slate-200 bg-white p-6">
           <div>
             <div className="flex items-center justify-between">
-              <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-[#0F766E]/10 text-[#0F766E]">
+              <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-[#1B6EB5]/10 text-[#1B6EB5]">
                 <Vote className="h-6 w-6" />
               </div>
               <ListenButton text={`${t(lang, 'tileVoteTitle')}. ${t(lang, 'tileVoteDesc')}`} lang={lang} compact />
             </div>
             <h2 className="mt-4 text-xl font-bold text-slate-900">{t(lang, 'tileVoteTitle')}</h2>
             <p className="mt-1.5 text-sm text-slate-600 leading-relaxed">{t(lang, 'tileVoteDesc')}</p>
-            <div className="mt-3 text-xs font-semibold text-[#0F766E] font-mono-num">
+            <div className="mt-3 text-xs font-semibold text-[#1B6EB5] font-mono-num">
               {openElections.length} election{openElections.length === 1 ? '' : 's'} · {openContestsCount} open contest{openContestsCount === 1 ? '' : 's'}
             </div>
           </div>
           <button
             type="button"
             onClick={() => onNavigate('vote')}
-            className="mt-5 inline-flex min-h-[48px] w-full items-center justify-between rounded-xl bg-slate-900 px-4 py-3 text-sm font-semibold text-white hover:bg-slate-800 transition-colors cursor-pointer"
+            className="mt-5 inline-flex min-h-[48px] w-full items-center justify-between rounded-xl bg-[#1B6EB5] px-4 py-3 text-sm font-semibold text-white hover:bg-[#155791] transition-colors cursor-pointer"
           >
             <span>Open Contests &amp; Ballots</span>
             <ArrowRight className="h-4 w-4" />
@@ -185,7 +185,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
         <div className="flex flex-col justify-between rounded-2xl border border-slate-200 bg-white p-6">
           <div>
             <div className="flex items-center justify-between">
-              <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-indigo-50 text-indigo-700">
+              <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-[#8EC5E8]/25 text-[#1B6EB5]">
                 <Landmark className="h-6 w-6" />
               </div>
               <ListenButton text={`${t(lang, 'tileMoneyTitle')}. ${t(lang, 'tileMoneyDesc')}`} lang={lang} compact />
@@ -199,17 +199,17 @@ export const HomeView: React.FC<HomeViewProps> = ({
           <button
             type="button"
             onClick={() => onNavigate('money')}
-            className="mt-5 inline-flex min-h-[48px] w-full items-center justify-between rounded-xl border border-slate-300 bg-white px-4 py-3 text-sm font-semibold text-slate-900 hover:bg-slate-50 transition-colors cursor-pointer"
+            className="mt-5 inline-flex min-h-[48px] w-full items-center justify-between rounded-xl border border-[#8A8D91]/45 bg-white px-4 py-3 text-sm font-semibold text-slate-900 hover:border-[#1B6EB5] hover:bg-[#8EC5E8]/10 transition-colors cursor-pointer"
           >
             <span>Inspect 3 Ledgers</span>
-            <ArrowRight className="h-4 w-4" />
+            <ArrowRight className="h-4 w-4 text-[#1B6EB5]" />
           </button>
         </div>
 
         <div className="flex flex-col justify-between rounded-2xl border border-slate-200 bg-white p-6">
           <div>
             <div className="flex items-center justify-between">
-              <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-amber-50 text-amber-700">
+              <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-[#F28C28]/15 text-[#C46810]">
                 <Lightbulb className="h-6 w-6" />
               </div>
               <ListenButton text={`${t(lang, 'tileIdeasTitle')}. ${t(lang, 'tileIdeasDesc')}`} lang={lang} compact />
@@ -223,10 +223,10 @@ export const HomeView: React.FC<HomeViewProps> = ({
           <button
             type="button"
             onClick={() => onNavigate('projects')}
-            className="mt-5 inline-flex min-h-[48px] w-full items-center justify-between rounded-xl border border-slate-300 bg-white px-4 py-3 text-sm font-semibold text-slate-900 hover:bg-slate-50 transition-colors cursor-pointer"
+            className="mt-5 inline-flex min-h-[48px] w-full items-center justify-between rounded-xl border border-[#8A8D91]/45 bg-white px-4 py-3 text-sm font-semibold text-slate-900 hover:border-[#1B6EB5] hover:bg-[#8EC5E8]/10 transition-colors cursor-pointer"
           >
             <span>View Projects</span>
-            <ArrowRight className="h-4 w-4" />
+            <ArrowRight className="h-4 w-4 text-[#1B6EB5]" />
           </button>
         </div>
       </section>
@@ -240,8 +240,8 @@ export const HomeView: React.FC<HomeViewProps> = ({
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-            <div className="rounded-2xl border border-[#0F766E]/30 bg-white p-5">
-              <div className="text-xs font-bold text-[#0F766E]">{t(lang, 'vfTitle')}</div>
+            <div className="rounded-2xl border border-[#1B6EB5]/35 bg-white p-5">
+              <div className="text-xs font-bold text-[#1B6EB5]">{t(lang, 'vfTitle')}</div>
               <div className="mt-3 text-xs text-slate-500">{t(lang, 'availableBalance')}</div>
               <div className="mt-0.5 text-2xl font-extrabold text-slate-900 font-mono-num">
                 {formatPkr(ledgerSummary.villageFund.bankBalancePkr)}
@@ -253,13 +253,13 @@ export const HomeView: React.FC<HomeViewProps> = ({
                 </div>
                 <div className="flex justify-between">
                   <span>{t(lang, 'inTransitNote')}</span>
-                  <span className="font-mono-num font-semibold text-amber-700">{formatPkr(ledgerSummary.villageFund.transfersInFlightPkr)}</span>
+                  <span className="font-mono-num font-semibold text-[#B45309]">{formatPkr(ledgerSummary.villageFund.transfersInFlightPkr)}</span>
                 </div>
               </div>
             </div>
 
-            <div className="rounded-2xl border border-indigo-200 bg-white p-5">
-              <div className="text-xs font-bold text-indigo-700">{t(lang, 'clTitle')}</div>
+            <div className="rounded-2xl border border-[#8EC5E8] bg-white p-5">
+              <div className="text-xs font-bold text-[#155791]">{t(lang, 'clTitle')}</div>
               <div className="mt-3 text-xs text-slate-500">{t(lang, 'totalCapital')}</div>
               <div className="mt-0.5 text-2xl font-extrabold text-slate-900 font-mono-num">
                 {formatPkr(ledgerSummary.contributorLedgerAggregate.totalCapitalPkr)}
@@ -276,8 +276,8 @@ export const HomeView: React.FC<HomeViewProps> = ({
               </div>
             </div>
 
-            <div className="rounded-2xl border border-amber-200 bg-white p-5">
-              <div className="text-xs font-bold text-amber-800">{t(lang, 'opsTitle')}</div>
+            <div className="rounded-2xl border border-[#F28C28]/45 bg-white p-5">
+              <div className="text-xs font-bold text-[#9A4D06]">{t(lang, 'opsTitle')}</div>
               <div className="mt-3 text-xs text-slate-500">{t(lang, 'reportedRevenue')}</div>
               <div className="mt-0.5 text-2xl font-extrabold text-slate-900 font-mono-num">
                 {formatPkr(ledgerSummary.operationsReported.totalPackageRevenuePkr)}
@@ -302,13 +302,13 @@ export const HomeView: React.FC<HomeViewProps> = ({
         <div className="rounded-2xl border border-slate-200 bg-white p-6">
           <div className="flex items-center justify-between mb-4">
             <h2 className="text-lg font-bold text-slate-900 flex items-center gap-2">
-              <Megaphone className="h-4 w-4 text-[#0F766E]" />
+              <Megaphone className="h-4 w-4 text-[#1B6EB5]" />
               {t(lang, 'recentNoticesHeading')}
             </h2>
             <button
               type="button"
               onClick={() => onNavigate('community')}
-              className="text-xs font-semibold text-[#0F766E] hover:underline cursor-pointer"
+              className="text-xs font-semibold text-[#1B6EB5] hover:underline cursor-pointer"
             >
               View All
             </button>
@@ -344,13 +344,13 @@ export const HomeView: React.FC<HomeViewProps> = ({
         <div className="rounded-2xl border border-slate-200 bg-white p-6">
           <div className="flex items-center justify-between mb-4">
             <h2 className="text-lg font-bold text-slate-900 flex items-center gap-2">
-              <MessageCircleWarning className="h-4 w-4 text-amber-700" />
+              <MessageCircleWarning className="h-4 w-4 text-[#F28C28]" />
               {t(lang, 'publicQuestionsHeading')}
             </h2>
             <button
               type="button"
               onClick={() => onNavigate('community')}
-              className="text-xs font-semibold text-[#0F766E] hover:underline cursor-pointer"
+              className="text-xs font-semibold text-[#1B6EB5] hover:underline cursor-pointer"
             >
               Ask / Answer
             </button>
@@ -373,9 +373,9 @@ export const HomeView: React.FC<HomeViewProps> = ({
                     {q.isOverdue ? (
                       <span className="font-bold text-red-700">{t(lang, 'overdueLabel')}</span>
                     ) : q.answer_text ? (
-                      <span className="font-semibold text-emerald-700">Answered</span>
+                      <span className="font-semibold text-[#3A7019]">Answered</span>
                     ) : (
-                      <span className="font-semibold text-amber-700">Awaiting Answer</span>
+                      <span className="font-semibold text-[#B45309]">Awaiting Answer</span>
                     )}
                   </div>
                   <p className="text-sm font-semibold text-slate-900">{q.question_text}</p>

@@ -26,7 +26,7 @@ export const MobileBottomNav: React.FC<MobileBottomNavProps> = ({
   return (
     <nav
       aria-label="Primary mobile navigation"
-      className="fixed bottom-0 left-0 right-0 z-40 border-t border-slate-200 bg-white/95 backdrop-blur-md md:hidden pb-safe"
+      className="fixed bottom-0 left-0 right-0 z-40 border-t border-[#8A8D91]/25 bg-white/95 backdrop-blur-md md:hidden pb-safe"
     >
       <div className="grid h-16 grid-cols-5 items-center">
         {tabs.map(({ id, label, Icon }) => {
@@ -37,7 +37,7 @@ export const MobileBottomNav: React.FC<MobileBottomNavProps> = ({
               type="button"
               onClick={() => onSelectTab(id)}
               className={`flex h-full min-h-[48px] flex-col items-center justify-center gap-0.5 px-1 transition-colors cursor-pointer ${
-                active ? 'text-[#0F766E] font-semibold' : 'text-slate-500 hover:text-slate-900'
+                active ? 'text-[#1B6EB5] font-semibold' : 'text-[#8A8D91] hover:text-slate-900'
               }`}
             >
               <Icon className="h-5 w-5" />

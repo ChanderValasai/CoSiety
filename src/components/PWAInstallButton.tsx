@@ -13,7 +13,7 @@ export const PWAInstallButton: React.FC = () => {
       <button
         type="button"
         onClick={install}
-        className="inline-flex min-h-[40px] items-center gap-2 rounded-lg border border-[#0F766E]/30 bg-white px-3 py-1.5 text-xs font-semibold text-[#0F766E] hover:bg-[#0F766E]/5 whitespace-nowrap shrink-0 cursor-pointer"
+        className="inline-flex min-h-[40px] items-center gap-2 rounded-lg border border-[#1B6EB5]/35 bg-white px-3 py-1.5 text-xs font-semibold text-[#1B6EB5] hover:bg-[#8EC5E8]/15 whitespace-nowrap shrink-0 cursor-pointer"
       >
         <Download className="h-3.5 w-3.5" />
         Install App
@@ -44,7 +44,7 @@ export const PWAInstallButton: React.FC = () => {
               <button
                 type="button"
                 onClick={() => setShowIOSGuide(false)}
-                className="mt-4 w-full min-h-[44px] rounded-lg bg-[#0F766E] py-2 text-sm font-semibold text-white cursor-pointer"
+                className="mt-4 w-full min-h-[44px] rounded-lg bg-[#1B6EB5] hover:bg-[#155791] py-2 text-sm font-semibold text-white cursor-pointer"
               >
                 Close
               </button>

@@ -18,7 +18,7 @@ export default defineConfig(() => {
           name: 'CoSiety — Digital Village Cooperative Society',
           short_name: 'CoSiety',
           description: 'Digital Village Cooperative Society portal launching in Pabohar, Tharparkar, Sindh.',
-          theme_color: '#0F766E',
+          theme_color: '#1B6EB5',
           background_color: '#F8FAFC',
           display: 'standalone',
           start_url: '/',

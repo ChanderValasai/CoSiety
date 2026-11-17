@@ -512,7 +512,7 @@ export const GovernanceAdminView: React.FC<GovernanceAdminViewProps> = ({
                 setMsg(null);
               }}
               className={`min-h-[40px] flex-1 rounded-lg px-3 py-2 text-xs font-semibold transition-colors whitespace-nowrap cursor-pointer ${
-                subTab === tab.id ? 'bg-white text-slate-900 shadow-sm' : 'text-slate-600 hover:text-slate-900'
+                subTab === tab.id ? 'bg-white text-[#1B6EB5] ring-1 ring-[#8EC5E8]/60 shadow-sm' : 'text-slate-600 hover:text-[#1B6EB5]'
               }`}
             >
               {tab.label}
@@ -522,9 +522,9 @@ export const GovernanceAdminView: React.FC<GovernanceAdminViewProps> = ({
       </div>
 
       {err && <div className="rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-800">{err}</div>}
-      {msg && <div className="rounded-xl border border-emerald-200 bg-emerald-50 px-4 py-3 text-sm text-emerald-900">{msg}</div>}
+      {msg && <div className="rounded-xl border border-[#6DB33F]/45 bg-[#6DB33F]/10 px-4 py-3 text-sm text-[#2E5E12]">{msg}</div>}
       {breakGlassResult && (
-        <div className="rounded-xl border border-amber-300 bg-amber-50 px-4 py-3 text-sm font-mono-num text-amber-950">
+        <div className="rounded-xl border border-[#F28C28]/50 bg-[#F28C28]/10 px-4 py-3 text-sm font-mono-num text-[#8F4700]">
           {breakGlassResult}
         </div>
       )}
@@ -534,7 +534,7 @@ export const GovernanceAdminView: React.FC<GovernanceAdminViewProps> = ({
         <div className="rounded-2xl border border-slate-200 bg-white p-6 space-y-4">
           <div>
             <h2 className="text-lg font-bold text-slate-900 flex items-center gap-2">
-              <UserCheck className="h-5 w-5 text-[#0F766E]" />
+              <UserCheck className="h-5 w-5 text-[#1B6EB5]" />
               Whole-Village Member Directory &amp; Two-Person Verification
             </h2>
             <p className="text-xs text-slate-500">
@@ -564,14 +564,14 @@ export const GovernanceAdminView: React.FC<GovernanceAdminViewProps> = ({
                       <div className="text-[11px] font-normal text-slate-500">{m.household_name}</div>
                     </td>
                     <td className="py-3 pr-3">
-                      <span className={`font-semibold ${m.status === 'active' ? 'text-emerald-700' : 'text-amber-700'}`}>
+                      <span className={`font-semibold ${m.status === 'active' ? 'text-[#3A7019]' : 'text-[#B45309]'}`}>
                         {m.status}
                       </span>{' '}
                       {m.identity_status && <>· <span className="text-slate-600">{m.identity_status}</span></>}
                     </td>
                     <td className="py-3 pr-3 text-slate-600">
                       {m.roles.length > 0 ? m.roles.join(', ') : 'Member'}
-                      {m.teamSide && <span className="ml-1 font-semibold uppercase text-[#0F766E]">({m.teamSide})</span>}
+                      {m.teamSide && <span className="ml-1 font-semibold uppercase text-[#1B6EB5]">({m.teamSide})</span>}
                     </td>
                     {!membersData.publicDirectoryOnly && (
                       <td className="py-3 pr-3 font-mono-num text-slate-600">{m.cnic_masked || '—'}</td>
@@ -581,7 +581,7 @@ export const GovernanceAdminView: React.FC<GovernanceAdminViewProps> = ({
                         {m.pointsTotal !== null && m.pointsTotal !== undefined ? (
                           <div>
                             <span className="font-bold text-slate-900">{m.pointsTotal} pts</span>
-                            {m.pointsPending && <div className="text-[11px] text-amber-700">Pending check (AC-PTS-04)</div>}
+                            {m.pointsPending && <div className="text-[11px] text-[#B45309]">Pending check (AC-PTS-04)</div>}
                             {m.hasUndecidedFactor && <div className="text-[11px] text-red-700">Undecided tier</div>}
                           </div>
                         ) : (
@@ -605,7 +605,7 @@ export const GovernanceAdminView: React.FC<GovernanceAdminViewProps> = ({
                           type="button"
                           disabled={busy}
                           onClick={() => handleApproveMember(m.id)}
-                          className="min-h-[34px] rounded-lg bg-[#0F766E] px-2.5 text-xs font-semibold text-white cursor-pointer"
+                          className="min-h-[34px] rounded-lg bg-[#1B6EB5] hover:bg-[#155791] px-2.5 text-xs font-semibold text-white cursor-pointer"
                         >
                           2. Approve Voter
                         </button>
@@ -615,7 +615,7 @@ export const GovernanceAdminView: React.FC<GovernanceAdminViewProps> = ({
                           type="button"
                           disabled={busy}
                           onClick={() => handleReverifyFactor(m.id, 'education', 'bachelor_plus')}
-                          className="min-h-[34px] rounded-lg border border-indigo-200 px-2.5 text-xs font-semibold text-indigo-800 hover:bg-indigo-50 cursor-pointer"
+                          className="min-h-[34px] rounded-lg border border-[#8EC5E8] px-2.5 text-xs font-semibold text-[#155791] hover:bg-[#8EC5E8]/15 cursor-pointer"
                         >
                           Verify Edu: Bachelor
                         </button>
@@ -646,7 +646,7 @@ export const GovernanceAdminView: React.FC<GovernanceAdminViewProps> = ({
           <div className="rounded-2xl border border-slate-200 bg-white p-6 space-y-5">
             <div>
               <h2 className="text-lg font-bold text-slate-900 flex items-center gap-2">
-                <Users className="h-5 w-5 text-[#0F766E]" />
+                <Users className="h-5 w-5 text-[#1B6EB5]" />
                 Two Co-Presidents &amp; Appointed Teams (AC-EXC-02 &amp; AC-EXC-03)
               </h2>
               <p className="text-xs text-slate-500">
@@ -661,7 +661,7 @@ export const GovernanceAdminView: React.FC<GovernanceAdminViewProps> = ({
                 return (
                   <div key={h.id} className="rounded-xl border border-slate-200 p-4 space-y-2 text-xs">
                     <div className="flex items-center justify-between">
-                      <span className="font-bold uppercase text-[#0F766E]">{h.seat.replace(/_/g, ' ')}</span>
+                      <span className="font-bold uppercase text-[#1B6EB5]">{h.seat.replace(/_/g, ' ')}</span>
                       <span className="font-mono-num text-slate-500">{h.start_date} → {h.end_date}</span>
                     </div>
                     <div className="text-base font-bold text-slate-900">{h.member_name}</div>
@@ -713,7 +713,7 @@ export const GovernanceAdminView: React.FC<GovernanceAdminViewProps> = ({
                 <button
                   type="submit"
                   disabled={busy}
-                  className="min-h-[38px] rounded-lg bg-[#0F766E] px-3 text-xs font-semibold text-white cursor-pointer"
+                  className="min-h-[38px] rounded-lg bg-[#1B6EB5] hover:bg-[#155791] px-3 text-xs font-semibold text-white cursor-pointer"
                 >
                   Appoint to Team
                 </button>
@@ -727,7 +727,7 @@ export const GovernanceAdminView: React.FC<GovernanceAdminViewProps> = ({
               <div className="flex flex-wrap items-center justify-between gap-2">
                 <div>
                   <h2 className="text-lg font-bold text-slate-900 flex items-center gap-2">
-                    <Award className="h-5 w-5 text-[#0F766E]" />
+                    <Award className="h-5 w-5 text-[#1B6EB5]" />
                     Vote-Points Formula Approval &amp; Trial Review ({formulaData.formula.version} · {formulaData.formula.status.toUpperCase()})
                   </h2>
                   <p className="text-xs text-slate-500">
@@ -763,7 +763,7 @@ export const GovernanceAdminView: React.FC<GovernanceAdminViewProps> = ({
                   type="button"
                   disabled={busy}
                   onClick={handleApproveFormula}
-                  className="min-h-[38px] rounded-lg bg-[#0F766E] px-4 text-xs font-semibold text-white cursor-pointer"
+                  className="min-h-[38px] rounded-lg bg-[#1B6EB5] hover:bg-[#155791] px-4 text-xs font-semibold text-white cursor-pointer"
                 >
                   Approve Formula (RES-2026-01)
                 </button>
@@ -800,7 +800,7 @@ export const GovernanceAdminView: React.FC<GovernanceAdminViewProps> = ({
           <div className="rounded-2xl border border-slate-200 bg-white p-6 space-y-4">
             <div>
               <h2 className="text-lg font-bold text-slate-900 flex items-center gap-2">
-                <ReceiptText className="h-5 w-5 text-amber-700" />
+                <ReceiptText className="h-5 w-5 text-[#F28C28]" />
                 Executive Expense Claims Pending OD-24 (Published, Zero VF Cash Impact)
               </h2>
               <p className="text-xs text-slate-500">
@@ -815,7 +815,7 @@ export const GovernanceAdminView: React.FC<GovernanceAdminViewProps> = ({
                     <div className="font-bold text-slate-900">
                       {cl.claimant_name} ({cl.team_side || 'exec'} team) · <span className="font-mono-num">{formatPkr(cl.amount_pkr)}</span>
                     </div>
-                    <div className="text-slate-600">{cl.category}: {cl.description} · Status: <strong className="text-amber-800">{cl.status}</strong></div>
+                    <div className="text-slate-600">{cl.category}: {cl.description} · Status: <strong className="text-[#9A4D06]">{cl.status}</strong></div>
                   </div>
                   {cl.status === 'pending_od24' && (
                     <button
@@ -858,7 +858,7 @@ export const GovernanceAdminView: React.FC<GovernanceAdminViewProps> = ({
           {/* Configurable Open Decisions OD-01..OD-36 */}
           <div className="rounded-2xl border border-slate-200 bg-white p-6 space-y-4">
             <h2 className="text-lg font-bold text-slate-900 flex items-center gap-2">
-              <Sliders className="h-5 w-5 text-[#0F766E]" />
+              <Sliders className="h-5 w-5 text-[#1B6EB5]" />
               Configurable Governance Parameters (SRS §13 Open Decisions OD-01..OD-36)
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
@@ -989,11 +989,11 @@ export const GovernanceAdminView: React.FC<GovernanceAdminViewProps> = ({
             <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
               <div>
                 <h2 className="text-lg font-bold text-slate-900 flex items-center gap-2">
-                  <ShieldCheck className="h-5 w-5 text-emerald-700" />
+                  <ShieldCheck className="h-5 w-5 text-[#6DB33F]" />
                   Tamper-Evident SHA-256 Audit Chain
                 </h2>
                 <p className="text-xs text-slate-500 font-mono-num mt-1">
-                  Status: <strong className={auditEventsData.verification.valid ? 'text-emerald-700' : 'text-red-700'}>
+                  Status: <strong className={auditEventsData.verification.valid ? 'text-[#3A7019]' : 'text-red-700'}>
                     {auditEventsData.verification.valid ? 'INTACT' : 'BROKEN'}
                   </strong> · Events: {auditEventsData.verification.totalEvents} · Head Hash: {auditEventsData.verification.headHash?.slice(0, 20)}…
                 </p>
@@ -1019,7 +1019,7 @@ export const GovernanceAdminView: React.FC<GovernanceAdminViewProps> = ({
                   type="button"
                   disabled={busy}
                   onClick={handleDownloadExport}
-                  className="inline-flex min-h-[40px] items-center gap-1.5 rounded-lg bg-[#0F766E] px-4 text-xs font-semibold text-white cursor-pointer"
+                  className="inline-flex min-h-[40px] items-center gap-1.5 rounded-lg bg-[#1B6EB5] hover:bg-[#155791] px-4 text-xs font-semibold text-white cursor-pointer"
                 >
                   <Download className="h-3.5 w-3.5" /> Export Audit Bundle
                 </button>
@@ -1057,13 +1057,13 @@ export const GovernanceAdminView: React.FC<GovernanceAdminViewProps> = ({
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
             <div className="rounded-2xl border border-slate-200 bg-white p-6 space-y-3">
               <h3 className="text-base font-bold text-slate-900 flex items-center gap-2">
-                <FileCheck2 className="h-4 w-4 text-[#0F766E]" /> Monthly Public Reports
+                <FileCheck2 className="h-4 w-4 text-[#1B6EB5]" /> Monthly Public Reports
               </h3>
               {reportsData.monthly.map((mr) => (
                 <div key={mr.id} className="rounded-xl border border-slate-200 p-4 text-xs space-y-1">
                   <div className="flex justify-between font-bold text-slate-900">
                     <span>Month: {mr.month_label}</span>
-                    <span className="font-mono-num text-[#0F766E]">VF Closing: {formatPkr(mr.vf_closing_pkr)}</span>
+                    <span className="font-mono-num text-[#1B6EB5]">VF Closing: {formatPkr(mr.vf_closing_pkr)}</span>
                   </div>
                   <div className="text-slate-600 font-mono-num">
                     VF In: {formatPkr(mr.vf_in_pkr)} · VF Out: {formatPkr(mr.vf_out_pkr)} · CL Capital: {formatPkr(mr.cl_capital_pkr)}
@@ -1075,7 +1075,7 @@ export const GovernanceAdminView: React.FC<GovernanceAdminViewProps> = ({
 
             <div className="rounded-2xl border border-slate-200 bg-white p-6 space-y-3">
               <h3 className="text-base font-bold text-slate-900 flex items-center gap-2">
-                <Lock className="h-4 w-4 text-[#0F766E]" /> Annual Independent Audit Reports
+                <Lock className="h-4 w-4 text-[#1B6EB5]" /> Annual Independent Audit Reports
               </h3>
               {reportsData.annual.length === 0 ? (
                 <p className="text-xs text-slate-500">
@@ -1085,7 +1085,7 @@ export const GovernanceAdminView: React.FC<GovernanceAdminViewProps> = ({
                 reportsData.annual.map((ar) => (
                   <div key={ar.id} className="rounded-xl border border-slate-200 p-4 text-xs space-y-1">
                     <div className="font-bold text-slate-900">FY {ar.fiscal_year} — {ar.auditor_name}</div>
-                    <div className="text-emerald-800 font-semibold">{ar.opinion}</div>
+                    <div className="text-[#3A7019] font-semibold">{ar.opinion}</div>
                     <div className="text-slate-600">{ar.findings_text}</div>
                   </div>
                 ))
@@ -1101,7 +1101,7 @@ export const GovernanceAdminView: React.FC<GovernanceAdminViewProps> = ({
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
             <div>
               <h2 className="text-lg font-bold text-slate-900 flex items-center gap-2">
-                <Building2 className="h-5 w-5 text-[#0F766E]" />
+                <Building2 className="h-5 w-5 text-[#1B6EB5]" />
                 Multi-Village Society Registry (Autonomous Tenant Isolation)
               </h2>
               <p className="text-xs text-slate-600 mt-1">
@@ -1111,7 +1111,7 @@ export const GovernanceAdminView: React.FC<GovernanceAdminViewProps> = ({
             <button
               type="button"
               onClick={onOpenOnboardVillage}
-              className="min-h-[44px] rounded-xl bg-[#0F766E] px-4 text-xs font-semibold text-white shrink-0 cursor-pointer"
+              className="min-h-[44px] rounded-xl bg-[#1B6EB5] hover:bg-[#155791] px-4 text-xs font-semibold text-white shrink-0 cursor-pointer"
             >
               Onboard New Village
             </button>
@@ -1121,7 +1121,7 @@ export const GovernanceAdminView: React.FC<GovernanceAdminViewProps> = ({
             {societiesList.map((s) => {
               const active = s.id === sid;
               return (
-                <div key={s.id} className={`rounded-xl border p-5 space-y-3 ${active ? 'border-[#0F766E] bg-[#0F766E]/5' : 'border-slate-200 bg-white'}`}>
+                <div key={s.id} className={`rounded-xl border p-5 space-y-3 ${active ? 'border-[#1B6EB5] bg-[#8EC5E8]/15' : 'border-slate-200 bg-white'}`}>
                   <div className="flex items-center justify-between">
                     <div>
                       <div className="text-xs text-slate-500">{s.district}, {s.province} · <span className="font-mono-num">{s.registration_no}</span></div>
@@ -1130,8 +1130,8 @@ export const GovernanceAdminView: React.FC<GovernanceAdminViewProps> = ({
                       </h3>
                     </div>
                     {active && (
-                      <span className="inline-flex items-center gap-1 text-xs font-bold text-[#0F766E]">
-                        <CheckCircle2 className="h-4 w-4" /> Active
+                      <span className="inline-flex items-center gap-1 text-xs font-bold text-[#1B6EB5]">
+                        <CheckCircle2 className="h-4 w-4 text-[#6DB33F]" /> Active
                       </span>
                     )}
                   </div>

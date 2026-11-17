@@ -65,7 +65,7 @@ export const SocietyOnboardingModal: React.FC<SocietyOnboardingModalProps> = ({
       <div className="w-full max-w-lg rounded-2xl border border-slate-200 bg-white shadow-xl">
         <div className="flex items-center justify-between border-b border-slate-200 px-6 py-4">
           <div className="flex items-center gap-2">
-            <Building2 className="h-5 w-5 text-[#0F766E]" />
+            <Building2 className="h-5 w-5 text-[#1B6EB5]" />
             <h2 className="text-lg font-bold text-slate-900">Onboard New Village Society</h2>
           </div>
           <button
@@ -185,7 +185,7 @@ export const SocietyOnboardingModal: React.FC<SocietyOnboardingModalProps> = ({
             <button
               type="submit"
               disabled={busy}
-              className="min-h-[42px] rounded-lg bg-[#0F766E] px-5 text-sm font-semibold text-white hover:bg-[#0D655E] cursor-pointer"
+              className="min-h-[42px] rounded-lg bg-[#1B6EB5] px-5 text-sm font-semibold text-white hover:bg-[#155791] transition-colors cursor-pointer"
             >
               {busy ? 'Provisioning...' : 'Provision Village Society'}
             </button>

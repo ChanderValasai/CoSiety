@@ -172,11 +172,11 @@ export default function App() {
           <img
             src="/assets/aistudio/Gemini_Generated_Image_gkw9vzgkw9vzgkw9_016a5295.jfif"
             alt="CoSiety"
-            className="mx-auto h-16 w-16 rounded-2xl object-cover border border-slate-200 bg-white shadow-sm"
+            className="mx-auto h-16 w-16 rounded-2xl object-cover border border-[#8A8D91]/30 bg-white shadow-sm"
           />
           <div className="text-xl font-extrabold text-slate-900">
-            <span className="text-[#EA580C]">Co</span>
-            <span className="text-[#1D68A7]">Siety</span>
+            <span className="text-[#F28C28]">Co</span>
+            <span className="text-[#1B6EB5]">Siety</span>
           </div>
           <p className="text-sm text-slate-500">Loading Village Cooperative Portal...</p>
         </div>
@@ -196,7 +196,7 @@ export default function App() {
               setLoading(true);
               loadAll();
             }}
-            className="min-h-[44px] rounded-xl bg-[#0F766E] px-5 text-sm font-semibold text-white cursor-pointer"
+            className="min-h-[44px] rounded-xl bg-[#1B6EB5] hover:bg-[#155791] px-5 text-sm font-semibold text-white transition-colors cursor-pointer"
           >
             Retry Connection
           </button>
@@ -228,12 +228,12 @@ export default function App() {
 
       <main className="mx-auto w-full max-w-6xl flex-1 px-4 py-6 sm:px-6 sm:py-8">
         {loadError && (
-          <div className="mb-6 rounded-xl border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-900 flex items-center justify-between gap-3">
+          <div className="mb-6 rounded-xl border border-[#F28C28]/45 bg-[#F28C28]/10 px-4 py-3 text-sm text-[#8F4700] flex items-center justify-between gap-3">
             <span>{loadError}</span>
             <button
               type="button"
               onClick={loadAll}
-              className="text-xs font-semibold text-amber-950 underline cursor-pointer"
+              className="text-xs font-semibold text-[#1B6EB5] underline cursor-pointer"
             >
               Refresh
             </button>
@@ -309,7 +309,7 @@ export default function App() {
         )}
       </main>
 
-      <footer className="mx-auto w-full max-w-6xl px-4 sm:px-6 pt-4 pb-6 border-t border-slate-200 text-xs text-slate-500 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
+      <footer className="mx-auto w-full max-w-6xl px-4 sm:px-6 pt-4 pb-6 border-t border-[#8A8D91]/25 text-xs text-slate-600 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
         <div>
           CoSiety · {bootstrap.activeSociety.name_en} ({bootstrap.activeSociety.registration_no}) · Woman &amp; Man Co-Presidents · Vote-Points Trial · Three Separated Ledgers
         </div>

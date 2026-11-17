@@ -35,8 +35,8 @@ export const ListenButton: React.FC<ListenButtonProps> = ({ text, lang, compact 
       aria-label={speaking ? t(lang, 'stopListening') : t(lang, 'listen')}
       className={`inline-flex min-h-[40px] items-center gap-1.5 rounded-lg border px-3 py-1.5 text-xs font-semibold transition-colors whitespace-nowrap shrink-0 cursor-pointer ${
         speaking
-          ? 'border-[#0F766E] bg-[#0F766E] text-white'
-          : 'border-slate-200 bg-white text-slate-700 hover:border-[#0F766E]/50 hover:text-[#0F766E]'
+          ? 'border-[#1B6EB5] bg-[#1B6EB5] text-white'
+          : 'border-[#8A8D91]/35 bg-white text-slate-700 hover:border-[#1B6EB5]/60 hover:text-[#1B6EB5]'
       }`}
     >
       {speaking ? <Square className="h-3.5 w-3.5 fill-current" /> : <Volume2 className="h-3.5 w-3.5" />}

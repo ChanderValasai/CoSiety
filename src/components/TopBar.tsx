@@ -42,7 +42,7 @@ export const TopBar: React.FC<TopBarProps> = ({
   ];
 
   return (
-    <div className="bg-white border-b border-slate-200">
+    <div className="bg-white border-b border-[#8A8D91]/25">
       {/* Strict 3-Zone Top Bar Contract */}
       <header className="mx-auto flex max-w-6xl items-center justify-between gap-8 px-4 py-3 sm:px-6">
         <button
@@ -53,13 +53,13 @@ export const TopBar: React.FC<TopBarProps> = ({
           <img
             src="/assets/aistudio/Gemini_Generated_Image_gkw9vzgkw9vzgkw9_016a5295.jfif"
             alt="CoSiety"
-            className="h-9 w-9 rounded-lg object-cover border border-slate-200 bg-white"
+            className="h-9 w-9 rounded-lg object-cover border border-[#8A8D91]/30 bg-white"
           />
           <span>
             {lang === 'en' ? (
               <>
-                <span className="text-[#EA580C]">Co</span>
-                <span className="text-[#1D68A7]">Siety</span>
+                <span className="text-[#F28C28]">Co</span>
+                <span className="text-[#1B6EB5]">Siety</span>
               </>
             ) : (
               t(lang, 'brand')
@@ -75,8 +75,8 @@ export const TopBar: React.FC<TopBarProps> = ({
               onClick={() => onSelectTab(item.id)}
               className={`py-1.5 border-b-2 transition-colors whitespace-nowrap shrink-0 cursor-pointer ${
                 activeTab === item.id
-                  ? 'border-[#0F766E] text-[#0F766E] font-semibold'
-                  : 'border-transparent hover:text-slate-900'
+                  ? 'border-[#1B6EB5] text-[#1B6EB5] font-semibold'
+                  : 'border-transparent hover:text-[#1B6EB5]'
               }`}
             >
               {item.label}
@@ -88,7 +88,7 @@ export const TopBar: React.FC<TopBarProps> = ({
           <button
             type="button"
             onClick={onOpenAuthModal}
-            className="min-h-[42px] rounded-lg bg-[#0F766E] px-4 py-2 text-sm font-semibold text-white hover:bg-[#0D655E] transition-colors whitespace-nowrap shrink-0 cursor-pointer"
+            className="min-h-[42px] rounded-lg bg-[#1B6EB5] px-4 py-2 text-sm font-semibold text-white hover:bg-[#155791] transition-colors whitespace-nowrap shrink-0 cursor-pointer"
           >
             {sessionUser ? sessionUser.fullName : t(lang, 'signIn')}
           </button>
@@ -96,17 +96,17 @@ export const TopBar: React.FC<TopBarProps> = ({
       </header>
 
       {/* Workspace Sub-Bar: Village Switcher, Language Switcher, Governance/Audit & SMS Sandbox */}
-      <div className="border-t border-slate-100 bg-[#F8FAFC]">
+      <div className="border-t border-[#8A8D91]/20 bg-[#F8FAFC]">
         <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-3 px-4 py-2 sm:px-6">
           <div className="flex flex-wrap items-center gap-2">
-            <label htmlFor="village-select" className="text-xs font-semibold text-slate-500 whitespace-nowrap">
+            <label htmlFor="village-select" className="text-xs font-semibold text-slate-600 whitespace-nowrap">
               {t(lang, 'activeVillage')}:
             </label>
             <select
               id="village-select"
               value={activeSociety.id}
               onChange={(e) => onSelectSociety(e.target.value)}
-              className="min-h-[38px] rounded-lg border border-slate-200 bg-white px-2.5 py-1 text-xs font-semibold text-slate-800 focus:border-[#0F766E] focus:outline-none cursor-pointer"
+              className="min-h-[38px] rounded-lg border border-[#8A8D91]/35 bg-white px-2.5 py-1 text-xs font-semibold text-slate-800 focus:border-[#1B6EB5] focus:outline-none cursor-pointer"
             >
               {societies.map((s) => (
                 <option key={s.id} value={s.id}>
@@ -117,7 +117,7 @@ export const TopBar: React.FC<TopBarProps> = ({
             <button
               type="button"
               onClick={onOpenOnboardVillage}
-              className="inline-flex min-h-[38px] items-center gap-1 rounded-lg border border-slate-200 bg-white px-2.5 py-1 text-xs font-semibold text-slate-700 hover:border-[#0F766E]/50 hover:text-[#0F766E] whitespace-nowrap shrink-0 cursor-pointer"
+              className="inline-flex min-h-[38px] items-center gap-1 rounded-lg border border-[#8A8D91]/35 bg-white px-2.5 py-1 text-xs font-semibold text-slate-700 hover:border-[#1B6EB5]/60 hover:text-[#1B6EB5] whitespace-nowrap shrink-0 cursor-pointer"
             >
               <Plus className="h-3.5 w-3.5" />
               {t(lang, 'addVillage')}
@@ -130,8 +130,8 @@ export const TopBar: React.FC<TopBarProps> = ({
               onClick={() => onSelectTab('governance')}
               className={`inline-flex min-h-[38px] items-center gap-1.5 rounded-lg border px-3 py-1 text-xs font-semibold whitespace-nowrap shrink-0 cursor-pointer ${
                 activeTab === 'governance'
-                  ? 'border-[#0F766E] bg-[#0F766E]/10 text-[#0F766E]'
-                  : 'border-slate-200 bg-white text-slate-700 hover:bg-slate-50'
+                  ? 'border-[#1B6EB5] bg-[#8EC5E8]/25 text-[#155791]'
+                  : 'border-[#8A8D91]/35 bg-white text-slate-700 hover:border-[#8EC5E8] hover:bg-[#8EC5E8]/10'
               }`}
             >
               <ShieldCheck className="h-3.5 w-3.5" />
@@ -141,14 +141,14 @@ export const TopBar: React.FC<TopBarProps> = ({
             <button
               type="button"
               onClick={onOpenSmsInbox}
-              className="inline-flex min-h-[38px] items-center gap-1.5 rounded-lg border border-slate-200 bg-white px-3 py-1 text-xs font-semibold text-slate-700 hover:bg-slate-50 whitespace-nowrap shrink-0 cursor-pointer"
+              className="inline-flex min-h-[38px] items-center gap-1.5 rounded-lg border border-[#8A8D91]/35 bg-white px-3 py-1 text-xs font-semibold text-slate-700 hover:border-[#8EC5E8] hover:bg-[#8EC5E8]/10 whitespace-nowrap shrink-0 cursor-pointer"
             >
-              <MessageSquare className="h-3.5 w-3.5" />
+              <MessageSquare className="h-3.5 w-3.5 text-[#8A8D91]" />
               {t(lang, 'smsInbox')}
             </button>
 
-            <div className="inline-flex items-center rounded-lg border border-slate-200 bg-white p-0.5">
-              <Globe className="mx-1.5 h-3.5 w-3.5 text-slate-400" />
+            <div className="inline-flex items-center rounded-lg border border-[#8A8D91]/35 bg-white p-0.5">
+              <Globe className="mx-1.5 h-3.5 w-3.5 text-[#8A8D91]" />
               {(['en', 'sd', 'ur'] as const).map((code) => (
                 <button
                   key={code}
@@ -156,8 +156,8 @@ export const TopBar: React.FC<TopBarProps> = ({
                   onClick={() => onChangeLang(code)}
                   className={`min-h-[32px] rounded-md px-2.5 py-1 text-xs font-semibold transition-colors whitespace-nowrap shrink-0 cursor-pointer ${
                     lang === code
-                      ? 'bg-[#0F766E] text-white'
-                      : 'text-slate-600 hover:text-slate-900'
+                      ? 'bg-[#1B6EB5] text-white'
+                      : 'text-slate-600 hover:text-[#1B6EB5]'
                   }`}
                 >
                   {code === 'en' ? 'EN' : code === 'sd' ? 'سنڌي' : 'اردو'}

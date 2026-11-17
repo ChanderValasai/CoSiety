@@ -321,7 +321,7 @@ export const CommunityView: React.FC<CommunityViewProps> = ({
                 setMsg(null);
               }}
               className={`min-h-[40px] flex-1 rounded-lg px-3 py-2 text-xs font-semibold transition-colors whitespace-nowrap cursor-pointer ${
-                subTab === tab.id ? 'bg-white text-slate-900 shadow-sm' : 'text-slate-600 hover:text-slate-900'
+                subTab === tab.id ? 'bg-white text-[#1B6EB5] ring-1 ring-[#8EC5E8]/60 shadow-sm' : 'text-slate-600 hover:text-[#1B6EB5]'
               }`}
             >
               {tab.label}
@@ -331,7 +331,7 @@ export const CommunityView: React.FC<CommunityViewProps> = ({
       </div>
 
       {err && <div className="rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-800">{err}</div>}
-      {msg && <div className="rounded-xl border border-emerald-200 bg-emerald-50 px-4 py-3 text-sm text-emerald-900">{msg}</div>}
+      {msg && <div className="rounded-xl border border-[#6DB33F]/45 bg-[#6DB33F]/10 px-4 py-3 text-sm text-[#2E5E12]">{msg}</div>}
 
       {/* TAB 1: GENERAL BODY AGENDA & WHOLE-VILLAGE MEETINGS */}
       {subTab === 'gb' && gbData && (
@@ -339,7 +339,7 @@ export const CommunityView: React.FC<CommunityViewProps> = ({
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
             <div className="rounded-2xl border border-slate-200 bg-white p-6 space-y-4">
               <h2 className="text-base font-bold text-slate-900 flex items-center gap-2">
-                <FileText className="h-4 w-4 text-[#0F766E]" />
+                <FileText className="h-4 w-4 text-[#1B6EB5]" />
                 Submitted General Body Agenda Items
               </h2>
               {gbData.agendaItems.length === 0 ? (
@@ -350,7 +350,7 @@ export const CommunityView: React.FC<CommunityViewProps> = ({
                     <div key={ag.id} className="py-3 first:pt-0">
                       <div className="flex items-center justify-between text-xs text-slate-500">
                         <span>By <strong>{ag.submitted_by_name}</strong> ({ag.channel})</span>
-                        <span className="font-semibold uppercase text-[#0F766E]">{ag.status}</span>
+                        <span className="font-semibold uppercase text-[#1B6EB5]">{ag.status}</span>
                       </div>
                       <div className="text-sm font-bold text-slate-900 mt-0.5">{ag.title}</div>
                       <p className="text-xs text-slate-600 mt-1">{ag.description}</p>
@@ -390,7 +390,7 @@ export const CommunityView: React.FC<CommunityViewProps> = ({
               <button
                 type="submit"
                 disabled={busy}
-                className="min-h-[42px] rounded-lg bg-[#0F766E] px-4 text-xs font-semibold text-white cursor-pointer"
+                className="min-h-[42px] rounded-lg bg-[#1B6EB5] hover:bg-[#155791] px-4 text-xs font-semibold text-white cursor-pointer"
               >
                 Submit to General Body Agenda
               </button>
@@ -400,7 +400,7 @@ export const CommunityView: React.FC<CommunityViewProps> = ({
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
             <div className="rounded-2xl border border-slate-200 bg-white p-6 space-y-4">
               <h3 className="text-base font-bold text-slate-900 flex items-center gap-2">
-                <Calendar className="h-4 w-4 text-[#0F766E]" />
+                <Calendar className="h-4 w-4 text-[#1B6EB5]" />
                 General Body Meetings
               </h3>
               <div className="divide-y divide-slate-100">
@@ -459,7 +459,7 @@ export const CommunityView: React.FC<CommunityViewProps> = ({
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
           <form onSubmit={handleSubmitIssue} className="rounded-2xl border border-slate-200 bg-white p-6 space-y-3 h-fit">
             <h2 className="text-base font-bold text-slate-900 flex items-center gap-2">
-              <AlertCircle className="h-4 w-4 text-amber-700" />
+              <AlertCircle className="h-4 w-4 text-[#F28C28]" />
               Report a Village Issue
             </h2>
             <div>
@@ -510,7 +510,7 @@ export const CommunityView: React.FC<CommunityViewProps> = ({
             <button
               type="submit"
               disabled={busy}
-              className="w-full min-h-[44px] rounded-lg bg-[#0F766E] px-4 text-sm font-semibold text-white cursor-pointer"
+              className="w-full min-h-[44px] rounded-lg bg-[#1B6EB5] hover:bg-[#155791] px-4 text-sm font-semibold text-white cursor-pointer"
             >
               Submit Issue
             </button>
@@ -523,7 +523,7 @@ export const CommunityView: React.FC<CommunityViewProps> = ({
                   <span>
                     <strong className="text-slate-900">{iss.category}</strong> · {iss.place_text} · Visibility: <strong>{iss.visibility}</strong>
                   </span>
-                  <span className="font-semibold uppercase text-[#0F766E]">{iss.status}</span>
+                  <span className="font-semibold uppercase text-[#1B6EB5]">{iss.status}</span>
                 </div>
                 <p className="text-sm text-slate-900">{iss.description}</p>
                 {iss.executive_response && (
@@ -537,7 +537,7 @@ export const CommunityView: React.FC<CommunityViewProps> = ({
                       type="button"
                       disabled={busy}
                       onClick={() => handleConvertIssue(iss.id)}
-                      className="text-xs font-semibold text-[#0F766E] hover:underline cursor-pointer"
+                      className="text-xs font-semibold text-[#1B6EB5] hover:underline cursor-pointer"
                     >
                       Convert Issue into Whole-Village Project Proposal →
                     </button>
@@ -554,7 +554,7 @@ export const CommunityView: React.FC<CommunityViewProps> = ({
         <div className="space-y-6">
           <form onSubmit={handleAskQuestion} className="rounded-2xl border border-slate-200 bg-white p-6 space-y-3">
             <h2 className="text-base font-bold text-slate-900 flex items-center gap-2">
-              <MessageSquare className="h-4 w-4 text-[#0F766E]" />
+              <MessageSquare className="h-4 w-4 text-[#1B6EB5]" />
               Ask the Co-Presidents &amp; Team (7-Day Public Response Deadline)
             </h2>
             <div className="flex flex-col sm:flex-row gap-3">
@@ -568,7 +568,7 @@ export const CommunityView: React.FC<CommunityViewProps> = ({
               <button
                 type="submit"
                 disabled={busy}
-                className="min-h-[44px] rounded-lg bg-[#0F766E] px-5 text-sm font-semibold text-white cursor-pointer"
+                className="min-h-[44px] rounded-lg bg-[#1B6EB5] hover:bg-[#155791] px-5 text-sm font-semibold text-white cursor-pointer"
               >
                 Post Question
               </button>
@@ -585,9 +585,9 @@ export const CommunityView: React.FC<CommunityViewProps> = ({
                   {q.isOverdue ? (
                     <span className="font-bold text-red-700">OVERDUE (Publicly Flagged)</span>
                   ) : q.answer_text ? (
-                    <span className="font-bold text-emerald-700">Answered</span>
+                    <span className="font-bold text-[#3A7019]">Answered</span>
                   ) : (
-                    <span className="font-semibold text-amber-700">Pending</span>
+                    <span className="font-semibold text-[#B45309]">Pending</span>
                   )}
                 </div>
                 <p className="text-sm font-bold text-slate-900">{q.question_text}</p>
@@ -625,7 +625,7 @@ export const CommunityView: React.FC<CommunityViewProps> = ({
           {isExecutive && (
             <form onSubmit={handlePublishNotice} className="rounded-2xl border border-slate-200 bg-white p-6 space-y-3">
               <h2 className="text-base font-bold text-slate-900 flex items-center gap-2">
-                <Plus className="h-4 w-4 text-[#0F766E]" />
+                <Plus className="h-4 w-4 text-[#1B6EB5]" />
                 Co-President Team: Publish Immutable Notice
               </h2>
               <input
@@ -651,7 +651,7 @@ export const CommunityView: React.FC<CommunityViewProps> = ({
                 <button
                   type="submit"
                   disabled={busy}
-                  className="min-h-[42px] rounded-lg bg-[#0F766E] px-5 text-xs font-semibold text-white cursor-pointer"
+                  className="min-h-[42px] rounded-lg bg-[#1B6EB5] hover:bg-[#155791] px-5 text-xs font-semibold text-white cursor-pointer"
                 >
                   Publish Notice v1
                 </button>
@@ -662,7 +662,7 @@ export const CommunityView: React.FC<CommunityViewProps> = ({
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
             <div className="rounded-2xl border border-slate-200 bg-white p-6 space-y-4">
               <h2 className="text-lg font-bold text-slate-900 flex items-center gap-2">
-                <Megaphone className="h-4 w-4 text-[#0F766E]" />
+                <Megaphone className="h-4 w-4 text-[#1B6EB5]" />
                 Published Notices (Versioned)
               </h2>
               <div className="divide-y divide-slate-100">
@@ -692,7 +692,7 @@ export const CommunityView: React.FC<CommunityViewProps> = ({
             <div className="rounded-2xl border border-slate-200 bg-white p-6 space-y-4">
               <div className="flex items-center justify-between">
                 <h2 className="text-lg font-bold text-slate-900 flex items-center gap-2">
-                  <BookOpen className="h-4 w-4 text-[#0F766E]" />
+                  <BookOpen className="h-4 w-4 text-[#1B6EB5]" />
                   Explainer Library (incl. Presidency Book)
                 </h2>
                 <button

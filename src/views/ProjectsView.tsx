@@ -200,7 +200,7 @@ export const ProjectsView: React.FC<ProjectsViewProps> = ({
         <button
           type="button"
           onClick={() => setShowForm((v) => !v)}
-          className="inline-flex min-h-[48px] items-center gap-2 rounded-xl bg-[#0F766E] px-5 py-2.5 text-sm font-semibold text-white hover:bg-[#0D655E] shrink-0 cursor-pointer"
+          className="inline-flex min-h-[48px] items-center gap-2 rounded-xl bg-[#1B6EB5] px-5 py-2.5 text-sm font-semibold text-white hover:bg-[#155791] shrink-0 cursor-pointer"
         >
           <Plus className="h-4 w-4" />
           {t(lang, 'proposeProjectBtn')}
@@ -208,12 +208,12 @@ export const ProjectsView: React.FC<ProjectsViewProps> = ({
       </div>
 
       {err && <div className="rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-800">{err}</div>}
-      {msg && <div className="rounded-xl border border-emerald-200 bg-emerald-50 px-4 py-3 text-sm text-emerald-900">{msg}</div>}
+      {msg && <div className="rounded-xl border border-[#6DB33F]/45 bg-[#6DB33F]/10 px-4 py-3 text-sm text-[#2E5E12]">{msg}</div>}
 
       {showForm && (
         <form onSubmit={handleSubmitProposal} className="rounded-2xl border border-slate-200 bg-white p-6 space-y-4">
           <h2 className="text-lg font-bold text-slate-900 flex items-center gap-2">
-            <Lightbulb className="h-5 w-5 text-[#0F766E]" />
+            <Lightbulb className="h-5 w-5 text-[#F28C28]" />
             New Whole-Village Project Idea (Auto-saved offline draft)
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -294,7 +294,7 @@ export const ProjectsView: React.FC<ProjectsViewProps> = ({
             <button
               type="submit"
               disabled={busy}
-              className="min-h-[42px] rounded-lg bg-[#0F766E] px-5 text-sm font-semibold text-white cursor-pointer"
+              className="min-h-[42px] rounded-lg bg-[#1B6EB5] hover:bg-[#155791] px-5 text-sm font-semibold text-white cursor-pointer"
             >
               Submit Idea
             </button>
@@ -328,7 +328,7 @@ export const ProjectsView: React.FC<ProjectsViewProps> = ({
                       <span aria-hidden="true">·</span>
                       <span>Proposed by {prj.proposer_name}</span>
                       <span aria-hidden="true">·</span>
-                      <span className="font-mono-num font-bold text-[#0F766E]">
+                      <span className="font-mono-num font-bold text-[#1B6EB5]">
                         Budget: {formatPkr(prj.est_budget_pkr)}
                       </span>
                     </div>
@@ -347,8 +347,8 @@ export const ProjectsView: React.FC<ProjectsViewProps> = ({
                     const done = idx <= stageIdx;
                     return (
                       <div key={st} className="text-center">
-                        <div className={`h-2 rounded-full ${done ? 'bg-[#0F766E]' : 'bg-slate-200'}`} />
-                        <div className={`mt-1 text-[10px] capitalize truncate ${idx === stageIdx ? 'font-bold text-[#0F766E]' : 'text-slate-500'}`}>
+                        <div className={`h-2 rounded-full ${done ? 'bg-[#1B6EB5]' : 'bg-[#8A8D91]/25'}`} />
+                        <div className={`mt-1 text-[10px] capitalize truncate ${idx === stageIdx ? 'font-bold text-[#1B6EB5]' : 'text-slate-500'}`}>
                           {st}
                         </div>
                       </div>
@@ -366,8 +366,8 @@ export const ProjectsView: React.FC<ProjectsViewProps> = ({
                 )}
 
                 {prj.final_report_text && (
-                  <div className="rounded-xl border border-emerald-200 bg-emerald-50 px-4 py-3 text-xs text-emerald-900 flex items-start gap-2">
-                    <CheckCircle2 className="h-4 w-4 shrink-0 mt-0.5" />
+                  <div className="rounded-xl border border-[#6DB33F]/45 bg-[#6DB33F]/10 px-4 py-3 text-xs text-[#2E5E12] flex items-start gap-2">
+                    <CheckCircle2 className="h-4 w-4 text-[#6DB33F] shrink-0 mt-0.5" />
                     <div><strong>Final Public Report:</strong> {prj.final_report_text}</div>
                   </div>
                 )}
@@ -381,7 +381,7 @@ export const ProjectsView: React.FC<ProjectsViewProps> = ({
                       </span>
                     </div>
                     <div className="h-2.5 w-full rounded-full bg-slate-100 overflow-hidden">
-                      <div className="h-full bg-[#0F766E]" style={{ width: `${pct}%` }} />
+                      <div className="h-full bg-[#6DB33F]" style={{ width: `${pct}%` }} />
                     </div>
 
                     {prj.expenses.length > 0 && (
@@ -390,13 +390,13 @@ export const ProjectsView: React.FC<ProjectsViewProps> = ({
                           <div key={exp.id} className="p-3 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 text-xs">
                             <div>
                               <div className="font-bold text-slate-900 flex items-center gap-1.5">
-                                <Receipt className="h-3.5 w-3.5 text-slate-400" />
+                                <Receipt className="h-3.5 w-3.5 text-[#8A8D91]" />
                                 {exp.vendor_name} · <span className="font-mono-num">{formatPkr(exp.amount_pkr)}</span>
                               </div>
                               <div className="text-slate-500 mt-0.5">
                                 {exp.description} · Receipt: {exp.invoice_doc_ref} · Prepared on{' '}
                                 <strong className="uppercase">{exp.requested_team_side || 'exec'} team</strong> · Status:{' '}
-                                <strong className={exp.status === 'approved' ? 'text-emerald-700' : 'text-amber-700'}>
+                                <strong className={exp.status === 'approved' ? 'text-[#3A7019]' : 'text-[#B45309]'}>
                                   {exp.status}
                                 </strong>
                               </div>
@@ -439,7 +439,7 @@ export const ProjectsView: React.FC<ProjectsViewProps> = ({
                         <button
                           type="submit"
                           disabled={busy}
-                          className="min-h-[38px] rounded-lg bg-[#0F766E] px-3 text-xs font-semibold text-white cursor-pointer"
+                          className="min-h-[38px] rounded-lg bg-[#1B6EB5] hover:bg-[#155791] px-3 text-xs font-semibold text-white cursor-pointer"
                         >
                           Request Expense
                         </button>
@@ -447,7 +447,7 @@ export const ProjectsView: React.FC<ProjectsViewProps> = ({
                     )}
 
                     <div className="flex items-start gap-1.5 text-[11px] text-slate-500">
-                      <ShieldAlert className="h-3.5 w-3.5 text-amber-700 shrink-0 mt-0.5" />
+                      <ShieldAlert className="h-3.5 w-3.5 text-[#F28C28] shrink-0 mt-0.5" />
                       <span>
                         Cross-Team &amp; COI Demo: Woman-team requests (e.g. Bilawal) cannot be approved by Woman team (Fatima) — only the Man team! And Man-team member <strong>Rehman Samoon</strong> is blocked by Conflict-of-Interest recusal on &ldquo;Thar Solar &amp; Hardware&rdquo;, so <strong>Sajjad / Parveen</strong> must approve.
                       </span>
@@ -465,7 +465,7 @@ export const ProjectsView: React.FC<ProjectsViewProps> = ({
                       type="button"
                       disabled={busy}
                       onClick={() => handleTransition(prj.id, nextStage)}
-                      className="min-h-[40px] rounded-lg border border-[#0F766E]/40 bg-[#0F766E]/5 px-4 text-xs font-semibold text-[#0F766E] hover:bg-[#0F766E]/10 cursor-pointer"
+                      className="min-h-[40px] rounded-lg border border-[#1B6EB5]/40 bg-[#8EC5E8]/15 px-4 text-xs font-semibold text-[#155791] hover:bg-[#8EC5E8]/25 cursor-pointer"
                     >
                       Advance to &ldquo;{nextStage}&rdquo;
                     </button>

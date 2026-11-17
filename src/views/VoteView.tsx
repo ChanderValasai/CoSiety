@@ -39,13 +39,13 @@ interface VoteViewProps {
 }
 
 function BallotSymbol({ symbol }: { symbol: string }) {
-  if (symbol === 'check') return <CheckCircle2 className="h-7 w-7 text-emerald-700" />;
+  if (symbol === 'check') return <CheckCircle2 className="h-7 w-7 text-[#6DB33F]" />;
   if (symbol === 'x') return <XCircle className="h-7 w-7 text-red-700" />;
-  if (symbol === 'minus') return <MinusCircle className="h-7 w-7 text-slate-500" />;
-  if (symbol === 'sun') return <Sun className="h-7 w-7 text-amber-600" />;
-  if (symbol === 'wheat') return <Wheat className="h-7 w-7 text-amber-700" />;
-  if (symbol === 'droplet') return <Droplet className="h-7 w-7 text-sky-700" />;
-  return <Users className="h-7 w-7 text-[#0F766E]" />;
+  if (symbol === 'minus') return <MinusCircle className="h-7 w-7 text-[#8A8D91]" />;
+  if (symbol === 'sun') return <Sun className="h-7 w-7 text-[#F28C28]" />;
+  if (symbol === 'wheat') return <Wheat className="h-7 w-7 text-[#D97706]" />;
+  if (symbol === 'droplet') return <Droplet className="h-7 w-7 text-[#1B6EB5]" />;
+  return <Users className="h-7 w-7 text-[#1B6EB5]" />;
 }
 
 export const VoteView: React.FC<VoteViewProps> = ({
@@ -346,7 +346,7 @@ export const VoteView: React.FC<VoteViewProps> = ({
             onClick={() => setShowFormulaTable((v) => !v)}
             className="inline-flex min-h-[44px] items-center gap-2 rounded-xl border border-slate-300 bg-white px-4 py-2 text-xs font-semibold text-slate-800 hover:bg-slate-50 cursor-pointer"
           >
-            <Award className="h-4 w-4 text-[#0F766E]" />
+            <Award className="h-4 w-4 text-[#1B6EB5]" />
             {showFormulaTable ? 'Hide Formula & Stats' : 'Public Formula & Stats'}
           </button>
           <button
@@ -354,7 +354,7 @@ export const VoteView: React.FC<VoteViewProps> = ({
             onClick={() => setKioskMode((v) => !v)}
             className={`inline-flex min-h-[44px] items-center gap-2 rounded-xl border px-4 py-2 text-xs font-semibold transition-colors cursor-pointer ${
               kioskMode
-                ? 'border-[#0F766E] bg-[#0F766E] text-white'
+                ? 'border-[#1B6EB5] bg-[#1B6EB5] text-white'
                 : 'border-slate-300 bg-white text-slate-800 hover:bg-slate-50'
             }`}
           >
@@ -366,9 +366,9 @@ export const VoteView: React.FC<VoteViewProps> = ({
 
       {/* Signed-in Private Points Breakdown Banner */}
       {bootstrap.sessionUser && userPts && (
-        <div className="rounded-2xl border border-[#0F766E]/30 bg-white p-5 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+        <div className="rounded-2xl border border-[#8EC5E8] bg-white p-5 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
           <div>
-            <div className="text-xs font-bold uppercase text-[#0F766E]">
+            <div className="text-xs font-bold uppercase text-[#1B6EB5]">
               Your Private Vote-Points ({bootstrap.sessionUser.fullName}) — Formula {userPts.formulaVersion} ({userPts.formulaStatus})
             </div>
             <div className="mt-1 text-sm text-slate-800">
@@ -379,7 +379,7 @@ export const VoteView: React.FC<VoteViewProps> = ({
               <span className="font-mono-num font-semibold">{userPts.exposurePts}</span>
             </div>
             {(userPts.pointsPending || userPts.hasUndecidedFactor) && (
-              <div className="mt-1 text-xs text-amber-800 font-medium">
+              <div className="mt-1 text-xs text-[#9A4D06] font-medium">
                 {userPts.pointsPending
                   ? 'AC-PTS-04: Submitted proof factors are awaiting Verification Officer check (0 points granted for pending items).'
                   : userPts.undecidedNote || 'Includes an undecided formula option awaiting General Body decision.'}
@@ -408,7 +408,7 @@ export const VoteView: React.FC<VoteViewProps> = ({
               <span>Scored: <strong>{formulaData.aggregateStats.scoredMembers}</strong></span>
               <span>Avg: <strong>{formulaData.aggregateStats.avgPoints} pts</strong></span>
               <span>Range: <strong>{formulaData.aggregateStats.minPoints}–{formulaData.aggregateStats.maxPoints}</strong></span>
-              <span>Undecided: <strong className="text-amber-700">{formulaData.aggregateStats.undecidedMembersCount}</strong></span>
+              <span>Undecided: <strong className="text-[#B45309]">{formulaData.aggregateStats.undecidedMembersCount}</strong></span>
             </div>
           </div>
 
@@ -421,7 +421,7 @@ export const VoteView: React.FC<VoteViewProps> = ({
                   .map((it) => (
                     <div key={it.id} className="flex items-center justify-between gap-2">
                       <span className="text-slate-700">{pickLang(lang, it.label_en, it.label_sd, it.label_ur)}</span>
-                      <span className={`font-mono-num font-semibold shrink-0 ${it.value_points === null ? 'text-amber-700' : 'text-slate-900'}`}>
+                      <span className={`font-mono-num font-semibold shrink-0 ${it.value_points === null ? 'text-[#B45309]' : 'text-slate-900'}`}>
                         {it.value_points === null ? 'OD Pending' : `${it.value_points} pts`}
                       </span>
                     </div>
@@ -433,7 +433,7 @@ export const VoteView: React.FC<VoteViewProps> = ({
       )}
 
       {kioskMode && (
-        <div className="rounded-2xl border border-[#0F766E]/40 bg-[#0F766E]/5 p-5 space-y-3">
+        <div className="rounded-2xl border border-[#1B6EB5]/35 bg-[#8EC5E8]/15 p-5 space-y-3">
           <div className="flex flex-wrap items-center justify-between gap-2">
             <div>
               <h2 className="text-sm font-bold text-slate-900">
@@ -466,7 +466,7 @@ export const VoteView: React.FC<VoteViewProps> = ({
         </div>
       )}
       {receiptMsg && (
-        <div className="rounded-xl border border-emerald-200 bg-emerald-50 px-4 py-3 text-sm font-medium text-emerald-900">
+        <div className="rounded-xl border border-[#6DB33F]/45 bg-[#6DB33F]/10 px-4 py-3 text-sm font-medium text-[#2E5E12]">
           {receiptMsg}
         </div>
       )}
@@ -512,9 +512,9 @@ export const VoteView: React.FC<VoteViewProps> = ({
 
                 {/* Election Opening Gate Blockers (AC-PTS-03 & AC-EXC-01) */}
                 {isNomination && elec.openingGate && !elec.openingGate.ready && (
-                  <div className="rounded-xl border border-amber-300 bg-amber-50 p-4 space-y-2 text-xs text-amber-950">
+                  <div className="rounded-xl border border-[#F28C28]/50 bg-[#F28C28]/10 p-4 space-y-2 text-xs text-[#8F4700]">
                     <div className="font-bold flex items-center gap-1.5">
-                      <AlertTriangle className="h-4 w-4 text-amber-700 shrink-0" />
+                      <AlertTriangle className="h-4 w-4 text-[#F28C28] shrink-0" />
                       Election Opening Gate Blocked (AC-PTS-03 / AC-EXC-01):
                     </div>
                     <ul className="list-disc pl-5 space-y-1">
@@ -523,7 +523,7 @@ export const VoteView: React.FC<VoteViewProps> = ({
                       ))}
                     </ul>
                     {elec.openingGate.undecidedVoters.length > 0 && (
-                      <div className="pt-1 text-amber-900">
+                      <div className="pt-1 text-[#8F4700]">
                         Affected voters:{' '}
                         <strong>{elec.openingGate.undecidedVoters.map((u) => u.fullName).join(', ')}</strong> — Approve draft formula under Governance &amp; Audit → Formula &amp; OD Rules to resolve.
                       </div>
@@ -544,7 +544,7 @@ export const VoteView: React.FC<VoteViewProps> = ({
                         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 border-b border-slate-100 pb-3">
                           <div>
                             <div className="flex flex-wrap items-center gap-2 text-xs text-slate-500">
-                              <span className="font-semibold text-[#0F766E]">
+                              <span className="font-semibold text-[#1B6EB5]">
                                 {contest.weighting === 'points' ? 'Weighted by Vote-Points' : 'Equal Weight (1 pt · OD-02)'}
                               </span>
                               <span aria-hidden="true">·</span>
@@ -563,9 +563,9 @@ export const VoteView: React.FC<VoteViewProps> = ({
 
                           <div className="flex items-center gap-2">
                             <div className="inline-flex items-center gap-1 rounded-lg bg-slate-50 border border-slate-200 px-2.5 py-1.5 text-[11px] font-mono-num text-slate-700">
-                              <ShieldCheck className="h-3.5 w-3.5 text-emerald-700" />
+                              <ShieldCheck className="h-3.5 w-3.5 text-[#6DB33F]" />
                               Units {contest.sealedBallotCount} = Pts {contest.totalPointsUsed}:{' '}
-                              <strong className={contest.integrityCountsMatch ? 'text-emerald-700' : 'text-red-700'}>
+                              <strong className={contest.integrityCountsMatch ? 'text-[#3A7019]' : 'text-red-700'}>
                                 {contest.integrityCountsMatch ? 'OK' : 'ERR'}
                               </strong>
                             </div>
@@ -598,7 +598,7 @@ export const VoteView: React.FC<VoteViewProps> = ({
                                 <div key={cand.id} className="rounded-lg border border-slate-200 bg-slate-50/70 p-3 text-xs space-y-2">
                                   <div className="flex items-center justify-between">
                                     <span className="font-bold text-slate-900">{cand.member_name}</span>
-                                    <span className={`font-semibold uppercase ${cand.status === 'qualified' ? 'text-emerald-700' : 'text-amber-700'}`}>
+                                    <span className={`font-semibold uppercase ${cand.status === 'qualified' ? 'text-[#3A7019]' : 'text-[#B45309]'}`}>
                                       {cand.status}
                                     </span>
                                   </div>
@@ -630,7 +630,7 @@ export const VoteView: React.FC<VoteViewProps> = ({
                                           type="button"
                                           disabled={busy}
                                           onClick={() => handleRecordTraining(cand.id, 84)}
-                                          className="rounded bg-[#0F766E] px-2 py-1 text-[11px] font-semibold text-white cursor-pointer"
+                                          className="rounded bg-[#1B6EB5] hover:bg-[#155791] px-2 py-1 text-[11px] font-semibold text-white cursor-pointer"
                                         >
                                           Pass Presidency Book (84%)
                                         </button>
@@ -678,8 +678,8 @@ export const VoteView: React.FC<VoteViewProps> = ({
                         {isOpen && (
                           <div className="space-y-3 border-t border-slate-100 pt-3">
                             {!kioskMode && contest.hasVoted ? (
-                              <div className="rounded-xl border border-emerald-200 bg-emerald-50 p-4 text-sm font-semibold text-emerald-900 flex items-center gap-2">
-                                <CheckCircle2 className="h-5 w-5 text-emerald-700 shrink-0" />
+                              <div className="rounded-xl border border-[#6DB33F]/45 bg-[#6DB33F]/10 p-4 text-sm font-semibold text-[#2E5E12] flex items-center gap-2">
+                                <CheckCircle2 className="h-5 w-5 text-[#6DB33F] shrink-0" />
                                 <span>
                                   {t(lang, 'alreadyVoted')} · Snapshot weight: {contest.userPointsAtSnapshot} unit(s)
                                 </span>
@@ -688,12 +688,12 @@ export const VoteView: React.FC<VoteViewProps> = ({
                               <button
                                 type="button"
                                 onClick={onOpenAuth}
-                                className="min-h-[44px] rounded-xl bg-[#0F766E] px-5 py-2 text-sm font-semibold text-white cursor-pointer"
+                                className="min-h-[44px] rounded-xl bg-[#1B6EB5] hover:bg-[#155791] px-5 py-2 text-sm font-semibold text-white cursor-pointer"
                               >
                                 Sign In as Verified Voter to Cast Ballot
                               </button>
                             ) : !kioskMode && !contest.userEligible ? (
-                              <div className="rounded-xl border border-amber-200 bg-amber-50 p-3.5 text-xs font-medium text-amber-900">
+                              <div className="rounded-xl border border-[#F28C28]/45 bg-[#F28C28]/10 p-3.5 text-xs font-medium text-[#8F4700]">
                                 {contest.eligibilityReason || 'Not eligible for this contest.'}
                               </div>
                             ) : (canVoteSelf || canVoteKiosk) && (
@@ -716,8 +716,8 @@ export const VoteView: React.FC<VoteViewProps> = ({
                                         }
                                         className={`flex min-h-[72px] items-center gap-3 rounded-xl border-2 p-4 text-left transition-colors cursor-pointer ${
                                           chosen
-                                            ? 'border-[#0F766E] bg-[#0F766E]/5'
-                                            : 'border-slate-200 bg-white hover:border-slate-300'
+                                            ? 'border-[#1B6EB5] bg-[#8EC5E8]/15'
+                                            : 'border-slate-200 bg-white hover:border-[#8A8D91]'
                                         }`}
                                       >
                                         <BallotSymbol symbol={opt.symbol} />
@@ -750,14 +750,14 @@ export const VoteView: React.FC<VoteViewProps> = ({
                                     type="button"
                                     disabled={busy}
                                     onClick={() => castBallot(elec.id, contest)}
-                                    className="min-h-[44px] flex-1 rounded-xl bg-[#0F766E] px-5 text-sm font-semibold text-white hover:bg-[#0D655E] disabled:opacity-50 cursor-pointer"
+                                    className="min-h-[44px] flex-1 rounded-xl bg-[#1B6EB5] px-5 text-sm font-semibold text-white hover:bg-[#155791] disabled:opacity-50 cursor-pointer"
                                   >
                                     3. {t(lang, 'castVoteBtn')}
                                   </button>
                                 </div>
 
                                 {otpIssuedFor[contest.id] && (
-                                  <div className="text-xs font-semibold text-[#0F766E]">
+                                  <div className="text-xs font-semibold text-[#1B6EB5]">
                                     {otpIssuedFor[contest.id]}
                                   </div>
                                 )}
@@ -776,7 +776,7 @@ export const VoteView: React.FC<VoteViewProps> = ({
                               {contest.result.winnerName && (
                                 <>
                                   <span className="text-slate-400">·</span>
-                                  <span className="font-bold text-[#0F766E]">
+                                  <span className="font-bold text-[#1B6EB5]">
                                     Winner: {contest.result.winnerName}
                                   </span>
                                 </>
@@ -793,8 +793,8 @@ export const VoteView: React.FC<VoteViewProps> = ({
                             </div>
 
                             {contest.result.anonymityWarning && (
-                              <div className="rounded-lg border border-amber-200 bg-amber-50 px-3 py-2 text-xs text-amber-900 flex items-center gap-2">
-                                <ShieldAlert className="h-4 w-4 text-amber-700 shrink-0" />
+                              <div className="rounded-lg border border-[#F28C28]/45 bg-[#F28C28]/10 px-3 py-2 text-xs text-[#8F4700] flex items-center gap-2">
+                                <ShieldAlert className="h-4 w-4 text-[#F28C28] shrink-0" />
                                 <span>{contest.result.anonymityWarning}</span>
                               </div>
                             )}
@@ -824,7 +824,7 @@ export const VoteView: React.FC<VoteViewProps> = ({
                         type="button"
                         disabled={busy}
                         onClick={() => handleOpenElection(elec.id)}
-                        className="min-h-[40px] rounded-lg bg-[#0F766E] px-4 text-xs font-semibold text-white cursor-pointer"
+                        className="min-h-[40px] rounded-lg bg-[#1B6EB5] hover:bg-[#155791] px-4 text-xs font-semibold text-white cursor-pointer"
                       >
                         Check Gate &amp; Open Election
                       </button>

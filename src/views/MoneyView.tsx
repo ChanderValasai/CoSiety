@@ -348,8 +348,8 @@ export const MoneyView: React.FC<MoneyViewProps> = ({
               }}
               className={`min-h-[40px] flex-1 rounded-lg px-3 py-2 text-xs font-semibold transition-colors whitespace-nowrap cursor-pointer ${
                 subTab === tab.id
-                  ? 'bg-white text-slate-900 shadow-sm'
-                  : 'text-slate-600 hover:text-slate-900'
+                  ? 'bg-white text-[#1B6EB5] ring-1 ring-[#8EC5E8]/60 shadow-sm'
+                  : 'text-slate-600 hover:text-[#1B6EB5]'
               }`}
             >
               {tab.label}
@@ -359,21 +359,21 @@ export const MoneyView: React.FC<MoneyViewProps> = ({
       </div>
 
       {err && <div className="rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-800">{err}</div>}
-      {msg && <div className="rounded-xl border border-emerald-200 bg-emerald-50 px-4 py-3 text-sm text-emerald-900">{msg}</div>}
+      {msg && <div className="rounded-xl border border-[#6DB33F]/45 bg-[#6DB33F]/10 px-4 py-3 text-sm text-[#2E5E12]">{msg}</div>}
 
       {/* SUB-TAB 1: VILLAGE FUND PUBLIC LEDGER */}
       {subTab === 'vf' && ledgerSummary && (
         <div className="space-y-6">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-            <div className="rounded-2xl border border-[#0F766E]/30 bg-white p-5">
+            <div className="rounded-2xl border border-[#1B6EB5]/35 bg-white p-5">
               <div className="text-xs font-semibold text-slate-500">Confirmed Bank Balance</div>
               <div className="mt-1 text-2xl font-extrabold text-slate-900 font-mono-num">
                 {formatPkr(ledgerSummary.villageFund.bankBalancePkr)}
               </div>
             </div>
-            <div className="rounded-2xl border border-slate-200 bg-white p-5">
+            <div className="rounded-2xl border border-[#6DB33F]/35 bg-white p-5">
               <div className="text-xs font-semibold text-slate-500">Total Levy Received</div>
-              <div className="mt-1 text-2xl font-bold text-emerald-700 font-mono-num">
+              <div className="mt-1 text-2xl font-bold text-[#3A7019] font-mono-num">
                 {formatPkr(ledgerSummary.villageFund.totalReceivedPkr)}
               </div>
             </div>
@@ -383,9 +383,9 @@ export const MoneyView: React.FC<MoneyViewProps> = ({
                 {formatPkr(ledgerSummary.villageFund.totalSpentPkr)}
               </div>
             </div>
-            <div className="rounded-2xl border border-amber-200 bg-amber-50/40 p-5">
-              <div className="text-xs font-semibold text-amber-800">Sent / Awaiting Match (Not in Balance)</div>
-              <div className="mt-1 text-2xl font-bold text-amber-800 font-mono-num">
+            <div className="rounded-2xl border border-[#F28C28]/45 bg-[#F28C28]/10 p-5">
+              <div className="text-xs font-semibold text-[#9A4D06]">Sent / Awaiting Match (Not in Balance)</div>
+              <div className="mt-1 text-2xl font-bold text-[#9A4D06] font-mono-num">
                 {formatPkr(ledgerSummary.villageFund.transfersInFlightPkr)}
               </div>
             </div>
@@ -448,7 +448,7 @@ export const MoneyView: React.FC<MoneyViewProps> = ({
                             {e.reverses_entry_id ? '· Reversal Entry' : ''}
                           </div>
                         </td>
-                        <td className="py-3 pr-3 text-right font-mono-num font-semibold text-emerald-700 whitespace-nowrap">
+                        <td className="py-3 pr-3 text-right font-mono-num font-semibold text-[#3A7019] whitespace-nowrap">
                           {cashIn > 0 ? `+${formatPkr(cashIn)}` : '—'}
                         </td>
                         <td className="py-3 pr-3 text-right font-mono-num font-semibold text-slate-900 whitespace-nowrap">
@@ -521,7 +521,7 @@ export const MoneyView: React.FC<MoneyViewProps> = ({
                         <span className="text-xs font-medium text-slate-500">indicative</span>
                       </div>
 
-                      <div className="mt-1 font-mono-num text-xs font-semibold text-[#0F766E]">
+                      <div className="mt-1 font-mono-num text-xs font-semibold text-[#1B6EB5]">
                         {p.speed_label}
                       </div>
 
@@ -543,7 +543,7 @@ export const MoneyView: React.FC<MoneyViewProps> = ({
                       <ul className="space-y-2 text-xs text-slate-600">
                         {features.map((feat) => (
                           <li key={feat} className="flex items-start gap-2">
-                            <Check className="mt-0.5 h-3.5 w-3.5 shrink-0 text-emerald-600" />
+                            <Check className="mt-0.5 h-3.5 w-3.5 shrink-0 text-[#6DB33F]" />
                             <span>{feat}</span>
                           </li>
                         ))}
@@ -555,7 +555,7 @@ export const MoneyView: React.FC<MoneyViewProps> = ({
                         type="button"
                         disabled={busy}
                         onClick={() => handleBuyPackage(p.id, 'paid')}
-                        className="min-h-[44px] w-full rounded-xl bg-[#0B66A8] px-4 text-sm font-semibold text-white hover:bg-[#09558C] transition-colors cursor-pointer disabled:opacity-60"
+                        className="min-h-[44px] w-full rounded-xl bg-[#1B6EB5] px-4 text-sm font-semibold text-white hover:bg-[#155791] transition-colors cursor-pointer disabled:opacity-60"
                       >
                         Buy Package
                       </button>
@@ -596,9 +596,9 @@ export const MoneyView: React.FC<MoneyViewProps> = ({
                       <td className="py-2.5 pr-3 font-medium text-slate-900">{pur.member_name}</td>
                       <td className="py-2.5 pr-3 text-slate-600">{pur.package_name}</td>
                       <td className="py-2.5 pr-3 text-right font-mono-num">{formatPkr(pur.price_pkr)}</td>
-                      <td className="py-2.5 pr-3 text-right font-mono-num text-[#0F766E]">{formatPkr(pur.levy_pkr)}</td>
+                      <td className="py-2.5 pr-3 text-right font-mono-num text-[#1B6EB5]">{formatPkr(pur.levy_pkr)}</td>
                       <td className="py-2.5 pr-3">
-                        <span className={`font-semibold uppercase ${pur.status === 'paid' ? 'text-emerald-700' : pur.status === 'failed' ? 'text-red-700' : 'text-amber-700'}`}>
+                        <span className={`font-semibold uppercase ${pur.status === 'paid' ? 'text-[#3A7019]' : pur.status === 'failed' ? 'text-red-700' : 'text-[#B45309]'}`}>
                           {pur.status}
                         </span>
                       </td>
@@ -653,7 +653,7 @@ export const MoneyView: React.FC<MoneyViewProps> = ({
             <button
               type="submit"
               disabled={busy}
-              className="min-h-[42px] rounded-lg bg-amber-700 px-4 text-xs font-semibold text-white hover:bg-amber-800 cursor-pointer"
+              className="min-h-[42px] rounded-lg bg-[#F28C28] px-4 text-xs font-semibold text-slate-950 hover:bg-[#E07B18] transition-colors cursor-pointer"
             >
               Publish Sales Report &amp; Declare Sent Transfer
             </button>
@@ -664,7 +664,7 @@ export const MoneyView: React.FC<MoneyViewProps> = ({
             <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
               <div>
                 <h3 className="text-base font-bold text-slate-900 flex items-center gap-2">
-                  <ArrowLeftRight className="h-4 w-4 text-[#0F766E]" />
+                  <ArrowLeftRight className="h-4 w-4 text-[#1B6EB5]" />
                   2. Treasurer Bank Statement Matching Board
                 </h3>
                 <p className="text-xs text-slate-500">
@@ -707,7 +707,7 @@ export const MoneyView: React.FC<MoneyViewProps> = ({
                       <td className="py-2.5 pr-3 text-right font-mono-num">{formatPkr(tr.amount_expected_pkr)}</td>
                       <td className="py-2.5 pr-3 text-right font-mono-num font-semibold">{formatPkr(tr.amount_declared_pkr)}</td>
                       <td className="py-2.5 pr-3">
-                        <span className={`font-bold uppercase ${tr.state === 'confirmed' ? 'text-emerald-700' : tr.state === 'disputed' ? 'text-red-700' : 'text-amber-700'}`}>
+                        <span className={`font-bold uppercase ${tr.state === 'confirmed' ? 'text-[#3A7019]' : tr.state === 'disputed' ? 'text-red-700' : 'text-[#B45309]'}`}>
                           {tr.state}
                         </span>
                         {tr.dispute_reason && <div className="text-[11px] text-red-600">{tr.dispute_reason}</div>}
@@ -719,7 +719,7 @@ export const MoneyView: React.FC<MoneyViewProps> = ({
                               type="button"
                               disabled={busy}
                               onClick={() => handleConfirmTransfer(tr.id)}
-                              className="min-h-[34px] rounded-lg bg-[#0F766E] px-3 text-xs font-semibold text-white cursor-pointer"
+                              className="min-h-[34px] rounded-lg bg-[#1B6EB5] hover:bg-[#155791] px-3 text-xs font-semibold text-white cursor-pointer"
                             >
                               Confirm Match
                             </button>
@@ -748,9 +748,9 @@ export const MoneyView: React.FC<MoneyViewProps> = ({
       {/* SUB-TAB 4: CONTRIBUTOR LEDGER (AGGREGATE PUBLIC VS PRIVATE AUTHORIZED) */}
       {subTab === 'cl' && ledgerSummary && (
         <div className="space-y-6">
-          <div className="rounded-2xl border border-indigo-200 bg-indigo-50/40 p-5 flex items-start gap-3">
-            <ShieldAlert className="h-5 w-5 text-indigo-700 shrink-0 mt-0.5" />
-            <div className="text-sm text-indigo-950">
+          <div className="rounded-2xl border border-[#8EC5E8] bg-[#8EC5E8]/15 p-5 flex items-start gap-3">
+            <ShieldAlert className="h-5 w-5 text-[#1B6EB5] shrink-0 mt-0.5" />
+            <div className="text-sm text-slate-900">
               <strong>Constitutional Rule (AC-CON-01):</strong> Infrastructure contributors hold no extra voting rights or seats. Public visitors see village-wide totals only; individual agreements and return payouts require authentication as a Treasurer, Co-President, Auditor, or Contributor.
             </div>
           </div>
@@ -768,9 +768,9 @@ export const MoneyView: React.FC<MoneyViewProps> = ({
               <div className="text-xs font-semibold text-slate-500">Equipment Invoices Paid</div>
               <div className="mt-1 text-2xl font-bold font-mono-num">{formatPkr(ledgerSummary.contributorLedgerAggregate.totalInfraPaidPkr)}</div>
             </div>
-            <div className="rounded-2xl border border-slate-200 bg-white p-5">
+            <div className="rounded-2xl border border-[#8EC5E8] bg-white p-5">
               <div className="text-xs font-semibold text-slate-500">CL Bank Balance</div>
-              <div className="mt-1 text-2xl font-bold font-mono-num text-indigo-700">{formatPkr(ledgerSummary.contributorLedgerAggregate.clBankBalancePkr)}</div>
+              <div className="mt-1 text-2xl font-bold font-mono-num text-[#1B6EB5]">{formatPkr(ledgerSummary.contributorLedgerAggregate.clBankBalancePkr)}</div>
             </div>
           </div>
 
@@ -782,7 +782,7 @@ export const MoneyView: React.FC<MoneyViewProps> = ({
               <button
                 type="button"
                 onClick={onOpenAuth}
-                className="min-h-[42px] rounded-lg bg-[#0F766E] px-4 text-xs font-semibold text-white shrink-0 cursor-pointer"
+                className="min-h-[42px] rounded-lg bg-[#1B6EB5] hover:bg-[#155791] px-4 text-xs font-semibold text-white shrink-0 cursor-pointer"
               >
                 Sign In to Inspect
               </button>
@@ -796,7 +796,7 @@ export const MoneyView: React.FC<MoneyViewProps> = ({
                     type="button"
                     disabled={busy}
                     onClick={handleCalculateReturns}
-                    className="min-h-[40px] rounded-lg border border-indigo-300 bg-indigo-50 px-3 text-xs font-semibold text-indigo-900 hover:bg-indigo-100 cursor-pointer"
+                    className="min-h-[40px] rounded-lg border border-[#8EC5E8] bg-[#8EC5E8]/20 px-3 text-xs font-semibold text-[#155791] hover:bg-[#8EC5E8]/35 cursor-pointer"
                   >
                     Finance Maker: Calculate Period Returns
                   </button>
@@ -864,7 +864,7 @@ export const MoneyView: React.FC<MoneyViewProps> = ({
                               type="button"
                               disabled={busy}
                               onClick={() => handleApproveReturns(rc.id)}
-                              className="min-h-[38px] rounded-lg bg-[#0F766E] px-3 text-xs font-semibold text-white cursor-pointer"
+                              className="min-h-[38px] rounded-lg bg-[#1B6EB5] hover:bg-[#155791] px-3 text-xs font-semibold text-white cursor-pointer"
                             >
                               Checker: Approve &amp; Distribute
                             </button>

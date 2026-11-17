@@ -227,7 +227,7 @@ export const AuthSmsModal: React.FC<AuthSmsModalProps> = ({
               }}
               className={`inline-flex min-h-[40px] items-center gap-1.5 border-b-2 px-3 py-2 text-xs font-semibold transition-colors cursor-pointer ${
                 mode === id
-                  ? 'border-[#0F766E] text-[#0F766E]'
+                  ? 'border-[#1B6EB5] text-[#1B6EB5]'
                   : 'border-transparent text-slate-600 hover:text-slate-900'
               }`}
             >
@@ -244,7 +244,7 @@ export const AuthSmsModal: React.FC<AuthSmsModalProps> = ({
             </div>
           )}
           {statusMsg && (
-            <div className="rounded-lg border border-emerald-200 bg-emerald-50 px-4 py-3 text-sm text-emerald-900">
+            <div className="rounded-lg border border-[#6DB33F]/45 bg-[#6DB33F]/10 px-4 py-3 text-sm text-[#2E5E12]">
               {statusMsg}
             </div>
           )}
@@ -287,15 +287,15 @@ export const AuthSmsModal: React.FC<AuthSmsModalProps> = ({
                         onClick={() => handleSwitchPersona(p.id, p.fullName)}
                         className={`flex items-center justify-between rounded-lg border px-3 py-2.5 text-left transition-colors cursor-pointer ${
                           active
-                            ? 'border-[#0F766E] bg-[#0F766E]/5'
-                            : 'border-slate-200 bg-white hover:border-slate-300'
+                            ? 'border-[#1B6EB5] bg-[#8EC5E8]/15'
+                            : 'border-slate-200 bg-white hover:border-[#8A8D91]'
                         }`}
                       >
                         <div className="min-w-0">
                           <div className="text-sm font-semibold text-slate-900 truncate">{p.fullName}</div>
                           <div className="text-xs text-slate-500 truncate">{roleText}</div>
                         </div>
-                        {active && <span className="text-xs font-bold text-[#0F766E] shrink-0">Active</span>}
+                        {active && <span className="text-xs font-bold text-[#1B6EB5] shrink-0">Active</span>}
                       </button>
                     );
                   })}
@@ -304,7 +304,7 @@ export const AuthSmsModal: React.FC<AuthSmsModalProps> = ({
 
               <div className="border-t border-slate-200 pt-5">
                 <h3 className="text-sm font-bold text-slate-900 mb-2 flex items-center gap-1.5">
-                  <KeyRound className="h-4 w-4 text-[#0F766E]" />
+                  <KeyRound className="h-4 w-4 text-[#1B6EB5]" />
                   Standard Mobile + OTP Login
                 </h3>
                 <form onSubmit={otpSent ? handleVerifyLoginOtp : handleSendLoginOtp} className="grid grid-cols-1 sm:grid-cols-3 gap-3">
@@ -476,7 +476,7 @@ export const AuthSmsModal: React.FC<AuthSmsModalProps> = ({
               <button
                 type="submit"
                 disabled={busy}
-                className="w-full min-h-[44px] rounded-lg bg-[#0F766E] px-4 py-2 text-sm font-semibold text-white hover:bg-[#0D655E] cursor-pointer"
+                className="w-full min-h-[44px] rounded-lg bg-[#1B6EB5] px-4 py-2 text-sm font-semibold text-white hover:bg-[#155791] transition-colors cursor-pointer"
               >
                 Submit Application for Two-Person Verification
               </button>
@@ -492,7 +492,7 @@ export const AuthSmsModal: React.FC<AuthSmsModalProps> = ({
                 <button
                   type="button"
                   onClick={loadSms}
-                  className="text-xs font-semibold text-[#0F766E] hover:underline cursor-pointer"
+                  className="text-xs font-semibold text-[#1B6EB5] hover:underline cursor-pointer"
                 >
                   Refresh
                 </button>
