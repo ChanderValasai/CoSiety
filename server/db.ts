@@ -2,8 +2,34 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { DatabaseSync } from 'node:sqlite';
 
-const DATA_DIR = path.resolve(process.cwd(), 'data');
-fs.mkdirSync(DATA_DIR, { recursive: true });
+const IS_SERVERLESS = Boolean(
+  process.env.VERCEL || process.env.VERCEL_ENV || process.env.AWS_LAMBDA_FUNCTION_NAME || process.env.NETLIFY
+);
+
+function resolveDataDir(): string {
+  if (process.env.COSIETY_DATA_DIR) {
+    const custom = path.resolve(process.env.COSIETY_DATA_DIR);
+    fs.mkdirSync(custom, { recursive: true });
+    return custom;
+  }
+  if (IS_SERVERLESS) {
+    const tmpDir = '/tmp/cosiety-data';
+    fs.mkdirSync(tmpDir, { recursive: true });
+    return tmpDir;
+  }
+  const localDir = path.resolve(process.cwd(), 'data');
+  try {
+    fs.mkdirSync(localDir, { recursive: true });
+    fs.accessSync(localDir, fs.constants.W_OK);
+    return localDir;
+  } catch {
+    const tmpDir = '/tmp/cosiety-data';
+    fs.mkdirSync(tmpDir, { recursive: true });
+    return tmpDir;
+  }
+}
+
+const DATA_DIR = resolveDataDir();
 
 // Bump when schema changes significantly (v1.0 -> v1.1: vote-points, co-presidents, contests, no neighbourhood groups)
 const SCHEMA_VERSION = 'v1.1-2026-11-17';

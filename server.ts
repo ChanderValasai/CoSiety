@@ -1,22 +1,10 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import express from 'express';
-import { initAllSchemas } from './server/db.ts';
-import { seedInitialData } from './server/seed.ts';
-import { apiRouter } from './server/apiRouter.ts';
+import { createApiApp } from './server/app.ts';
 
 async function startServer() {
-  initAllSchemas();
-  seedInitialData();
-
-  const app = express();
-  app.use(express.json({ limit: '1mb' }));
-
-  app.get('/api/health', (_req, res) => {
-    res.json({ ok: true, service: 'cosiety-portal' });
-  });
-
-  app.use('/api/v1', apiRouter);
+  const app = createApiApp();
 
   const isProd = process.env.NODE_ENV === 'production';
   const distDir = path.resolve(process.cwd(), 'dist');
