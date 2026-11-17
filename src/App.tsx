@@ -150,7 +150,7 @@ export default function App() {
       setNotices(noticeRes.notices);
       setQuestions(qRes.questions);
     } catch (err) {
-      setLoadError((err as Error).message || 'Unable to connect to Cosiety server.');
+      setLoadError((err as Error).message || 'Unable to connect to CoSiety server.');
     } finally {
       setLoading(false);
     }
@@ -168,8 +168,16 @@ export default function App() {
   if (loading && !bootstrap) {
     return (
       <div className="min-h-screen bg-[#F8FAFC] flex items-center justify-center p-6">
-        <div className="text-center space-y-2">
-          <div className="text-xl font-extrabold text-slate-900">Cosiety</div>
+        <div className="text-center space-y-3">
+          <img
+            src="/assets/aistudio/Gemini_Generated_Image_gkw9vzgkw9vzgkw9_016a5295.jfif"
+            alt="CoSiety"
+            className="mx-auto h-16 w-16 rounded-2xl object-cover border border-slate-200 bg-white shadow-sm"
+          />
+          <div className="text-xl font-extrabold text-slate-900">
+            <span className="text-[#EA580C]">Co</span>
+            <span className="text-[#1D68A7]">Siety</span>
+          </div>
           <p className="text-sm text-slate-500">Loading Village Cooperative Portal...</p>
         </div>
       </div>
@@ -303,7 +311,7 @@ export default function App() {
 
       <footer className="mx-auto w-full max-w-6xl px-4 sm:px-6 pt-4 pb-6 border-t border-slate-200 text-xs text-slate-500 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
         <div>
-          Cosiety · {bootstrap.activeSociety.name_en} ({bootstrap.activeSociety.registration_no}) · Woman &amp; Man Co-Presidents · Vote-Points Trial · Three Separated Ledgers
+          CoSiety · {bootstrap.activeSociety.name_en} ({bootstrap.activeSociety.registration_no}) · Woman &amp; Man Co-Presidents · Vote-Points Trial · Three Separated Ledgers
         </div>
         <div>
           Active Societies: <span className="font-mono-num font-semibold text-slate-700">{bootstrap.societies.length}</span> · Multi-Village Autonomous Architecture

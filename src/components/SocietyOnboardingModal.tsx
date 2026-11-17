@@ -79,7 +79,7 @@ export const SocietyOnboardingModal: React.FC<SocietyOnboardingModalProps> = ({
 
         <form onSubmit={handleSubmit} className="p-6 space-y-4">
           <p className="text-xs text-slate-600 leading-relaxed">
-            Pabohar launches first, and Cosiety provisions every new village with isolated ledgers, whole-village membership (zero neighbourhood/caste subdivisions), Vote-Points formula skeleton, and OD-01..OD-36 parameters.
+            Pabohar launches first, and CoSiety provisions every new village with isolated ledgers, whole-village membership (zero neighbourhood/caste subdivisions), Vote-Points formula skeleton, and OD-01..OD-36 parameters.
           </p>
 
           {error && (

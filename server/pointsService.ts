@@ -271,7 +271,7 @@ export function checkElectionOpeningGate(societyId: string, electionId: string):
         blockers.push(`Candidate ${c.member_name} qualification is '${c.qualification_status}' (must be approved).`);
       }
       if (!c.training_passed) {
-        blockers.push(`Candidate ${c.member_name} has not passed the Cosiety Presidency Book test (FR-EXC-003).`);
+        blockers.push(`Candidate ${c.member_name} has not passed the CoSiety Presidency Book test (FR-EXC-003).`);
       }
     }
   }

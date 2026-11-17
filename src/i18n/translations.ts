@@ -2,7 +2,7 @@ import type { LangCode } from '../types';
 
 export const TRANSLATIONS: Record<LangCode, Record<string, string>> = {
   en: {
-    brand: 'Cosiety',
+    brand: 'CoSiety',
     navHome: 'Home',
     navVote: 'Vote',
     navMoney: 'Money',

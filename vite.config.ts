@@ -12,11 +12,11 @@ export default defineConfig(() => {
       tailwindcss(),
       VitePWA({
         registerType: 'autoUpdate',
-        includeAssets: ['icon.svg', 'apple-touch-icon.png', 'pwa-192x192.png', 'pwa-512x512.png', 'pwa-maskable-512x512.png'],
+        includeAssets: ['favicon-32x32.png', 'favicon-64x64.png', 'icon.svg', 'apple-touch-icon.png', 'pwa-192x192.png', 'pwa-512x512.png', 'pwa-maskable-512x512.png', 'assets/aistudio/Gemini_Generated_Image_gkw9vzgkw9vzgkw9_016a5295.jfif'],
         manifest: {
           id: '/',
-          name: 'Cosiety — Digital Village Cooperative Society',
-          short_name: 'Cosiety',
+          name: 'CoSiety — Digital Village Cooperative Society',
+          short_name: 'CoSiety',
           description: 'Digital Village Cooperative Society portal launching in Pabohar, Tharparkar, Sindh.',
           theme_color: '#0F766E',
           background_color: '#F8FAFC',

@@ -48,9 +48,23 @@ export const TopBar: React.FC<TopBarProps> = ({
         <button
           type="button"
           onClick={() => onSelectTab('home')}
-          className="text-xl font-extrabold tracking-tight text-[#0F172A] whitespace-nowrap shrink-0 cursor-pointer"
+          className="inline-flex items-center gap-2.5 text-xl font-extrabold tracking-tight text-[#0F172A] whitespace-nowrap shrink-0 cursor-pointer"
         >
-          {t(lang, 'brand')}
+          <img
+            src="/assets/aistudio/Gemini_Generated_Image_gkw9vzgkw9vzgkw9_016a5295.jfif"
+            alt="CoSiety"
+            className="h-9 w-9 rounded-lg object-cover border border-slate-200 bg-white"
+          />
+          <span>
+            {lang === 'en' ? (
+              <>
+                <span className="text-[#EA580C]">Co</span>
+                <span className="text-[#1D68A7]">Siety</span>
+              </>
+            ) : (
+              t(lang, 'brand')
+            )}
+          </span>
         </button>
 
         <nav className="hidden md:flex items-center gap-6 text-sm font-medium text-slate-600">

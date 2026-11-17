@@ -80,7 +80,7 @@ function issueOtp(societyId: string, mobile: string, purpose: string): string {
        VALUES (?, ?, ?, ?, ?, 0, 5, ?, ?)`
     )
     .run(newId('otp'), societyId, mobile, purpose, code, expiresAt, now.toISOString());
-  sendSms(societyId, mobile, `[Cosiety] Your verification code for ${purpose} is ${code} (valid 5 min).`, 'otp');
+  sendSms(societyId, mobile, `[CoSiety] Your verification code for ${purpose} is ${code} (valid 5 min).`, 'otp');
   return code;
 }
 
@@ -699,7 +699,7 @@ apiRouter.post('/members', (req, res) => {
   sendSms(
     sid,
     d.mobile.trim(),
-    `[Cosiety] Welcome ${d.fullName.trim()}! Your application is waiting for Verification Officer document check.`,
+    `[CoSiety] Welcome ${d.fullName.trim()}! Your application is waiting for Verification Officer document check.`,
     'membership'
   );
 
@@ -860,7 +860,7 @@ apiRouter.post('/verifications/:id/approve', (req, res) => {
   sendSms(
     sid,
     target.mobile_e164,
-    `[Cosiety] Congratulations ${target.full_name}! Your cooperative membership is now Active and Verified.`,
+    `[CoSiety] Congratulations ${target.full_name}! Your cooperative membership is now Active and Verified.`,
     'membership'
   );
 
@@ -2337,7 +2337,7 @@ apiRouter.post('/elections/:id/certify', (req, res) => {
         if (cand && (!cand.training_passed || cand.qualification_status !== 'approved')) {
           res.status(422).json({
             code: 'PRESIDENCY_TRAINING_REQUIRED',
-            title: `AC-EXC-01: Winner ${cand.member_name} has not completed Cosiety Presidency Book training or qualification check.`,
+            title: `AC-EXC-01: Winner ${cand.member_name} has not completed CoSiety Presidency Book training or qualification check.`,
           });
           return;
         }
@@ -3806,7 +3806,7 @@ apiRouter.post('/notices', (req, res) => {
     .run(newId('ntcv'), sid, id, titleEn, titleSd || titleEn, titleUr || titleEn, bodyEn, bodySd || bodyEn, bodyUr || bodyEn, actor.id, now);
 
   if (criticalSms) {
-    sendSms(sid, '+923001110001', `[Cosiety CRITICAL] ${titleEn}`, 'critical_notice');
+    sendSms(sid, '+923001110001', `[CoSiety CRITICAL] ${titleEn}`, 'critical_notice');
   }
   res.status(201).json({ id });
 });

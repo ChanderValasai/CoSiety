@@ -279,7 +279,7 @@ export const VoteView: React.FC<VoteViewProps> = ({
       );
       setReceiptMsg(
         res.passed
-          ? `Cosiety Presidency Book test PASSED (${score} >= ${res.passMark}).`
+          ? `CoSiety Presidency Book test PASSED (${score} >= ${res.passMark}).`
           : `Score recorded (${score} < ${res.passMark} pass mark).`
       );
       await onRefresh();
@@ -591,7 +591,7 @@ export const VoteView: React.FC<VoteViewProps> = ({
                         {contest.candidates.length > 0 && (
                           <div className="space-y-2">
                             <div className="text-xs font-bold text-slate-700">
-                              Candidates (Qualification + Cosiety Presidency Book Gate · AC-EXC-01)
+                              Candidates (Qualification + CoSiety Presidency Book Gate · AC-EXC-01)
                             </div>
                             <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
                               {contest.candidates.map((cand) => (

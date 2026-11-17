@@ -191,7 +191,7 @@ export function provisionSocietySkeleton(params: ProvisionSocietyParams): void {
     ['household.scope', 'OD-23', 'One Team Member Per Household Scope', 'executive_wide'],
     ['expenses.od24_funding_source', 'OD-24', 'Executive Governance Expense Funding Source', 'pending_od24'],
     ['eligibility.min_voting_age', 'OD-29', 'Minimum Voting Age (years)', 18],
-    ['presidency_book.pass_mark', 'OD-30', 'Cosiety Presidency Book Pass Mark (%)', 70],
+    ['presidency_book.pass_mark', 'OD-30', 'CoSiety Presidency Book Pass Mark (%)', 70],
     ['privacy.id_image_retention_days', 'OD-31', 'ID & Qualification Doc Retention After Verification (days)', 90],
     ['voting.ballot_mode_default', 'OD-32', 'Default Ballot Mode', 'secret'],
     ['voting.weighted_min_anonymity_set', 'OD-32', 'Minimum Turnout for Weighted Secret Anonymity', 5],
@@ -1376,7 +1376,7 @@ export function seedInitialData(): void {
     ],
     [
       'med-3', 'Presidency Book',
-      'Cosiety Presidency Book Audio Summary', 'ڪوسائٽي صدارتي ڪتاب جو آڊيو خلاصو', 'کوسائٹی صدارتی کتاب کا آڈیو خلاصہ',
+      'CoSiety Presidency Book Audio Summary', 'ڪوسائٽي صدارتي ڪتاب جو آڊيو خلاصو', 'کوسائٹی صدارتی کتاب کا آڈیو خلاصہ',
       'Mandatory reading summary on equal village governance, cross-team checking, and household rules for Co-President candidates.',
       'شريڪ صدر اميدوارن لاءِ صدارتي ڪتاب جو لازمي آڊيو خلاصو.',
       'شریک صدر امیدواروں کے لیے صدارتی کتاب کا لازمی آڈیو خلاصہ۔',
@@ -1414,7 +1414,7 @@ export function seedInitialData(): void {
   coreDb
     .prepare(
       `INSERT INTO sms_sandbox (id, society_id, mobile_e164, message, category, created_at)
-       VALUES ('sms-seed-1', 'pabohar', '+923001110001', '[Cosiety Pabohar] Co-President trial contests and Girls Digital Literacy project vote are open!', 'notice', '2026-11-12T08:05:00.000Z')`
+       VALUES ('sms-seed-1', 'pabohar', '+923001110001', '[CoSiety Pabohar] Co-President trial contests and Girls Digital Literacy project vote are open!', 'notice', '2026-11-12T08:05:00.000Z')`
     )
     .run();
 }

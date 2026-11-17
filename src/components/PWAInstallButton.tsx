@@ -36,7 +36,7 @@ export const PWAInstallButton: React.FC = () => {
         {showIOSGuide && (
           <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/50 p-4">
             <div className="w-full max-w-sm rounded-xl border border-slate-200 bg-white p-6 shadow-lg">
-              <h3 className="text-lg font-bold text-slate-900">Install Cosiety on iOS</h3>
+              <h3 className="text-lg font-bold text-slate-900">Install CoSiety on iOS</h3>
               <p className="mt-2 text-sm text-slate-600 leading-relaxed">
                 1. Tap the <strong>Share</strong> button in Safari.<br />
                 2. Scroll down and tap <strong>Add to Home Screen</strong>.

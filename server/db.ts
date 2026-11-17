@@ -32,7 +32,7 @@ function resolveDataDir(): string {
 const DATA_DIR = resolveDataDir();
 
 // Bump when schema changes significantly (v1.0 -> v1.1: vote-points, co-presidents, contests, no neighbourhood groups)
-const SCHEMA_VERSION = 'v1.1-2026-11-17';
+const SCHEMA_VERSION = 'v1.1-2026-11-17-cosiety';
 const VERSION_FILE = path.join(DATA_DIR, '.schema_version');
 
 function ensureSchemaVersion(): void {

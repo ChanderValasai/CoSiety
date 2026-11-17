@@ -1105,7 +1105,7 @@ export const GovernanceAdminView: React.FC<GovernanceAdminViewProps> = ({
                 Multi-Village Society Registry (Autonomous Tenant Isolation)
               </h2>
               <p className="text-xs text-slate-600 mt-1">
-                Cosiety launches first in Pabohar and scales to neighbouring villages by provisioning independent society tenants (`society_id`). Each society maintains isolated ledgers, rules, Vote-Points formulas, and whole-village voter registers.
+                CoSiety launches first in Pabohar and scales to neighbouring villages by provisioning independent society tenants (`society_id`). Each society maintains isolated ledgers, rules, Vote-Points formulas, and whole-village voter registers.
               </p>
             </div>
             <button
